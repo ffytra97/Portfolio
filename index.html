@@ -3,979 +3,558 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tristan Fahrasmane – Portfolio BTS SIO SISR</title>
-  <meta name="description" content="Portfolio de Tristan Fahrasmane, étudiant en BTS SIO option SISR en alternance comme technicien relation utilisateur.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0c0d0f">
+  <title>Tristan Fahrasmane, portfolio BTS SIO SISR</title>
+  <meta name="description" content="Portfolio de Tristan Fahrasmane, étudiant en BTS SIO option SISR et alternant technicien relation utilisateur au SDIS 77.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tristan Fahrasmane, portfolio BTS SIO SISR">
+  <meta property="og:description" content="Projets, compétences et veille technologique d'un étudiant en BTS SIO option SISR en alternance au SDIS 77.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230c0d0f'/%3E%3Ctext x='32' y='43' font-size='30' font-family='Arial' font-weight='600' text-anchor='middle' fill='%238db0ff'%3ETF%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add('js');</script>
   <style>
-:root {
-  --bg: #eef2f1;
-  --ink: #14202b;
-  --muted: #4d5f6b;
-  --line: #c5d0ce;
-  --accent: #2447d6;
-  --accent-ink: #ffffff;
-  --mark: #f6d55c;
-  --grid: rgba(20, 32, 43, 0.045);
-  --ok: #1d6b45;
-  --wip: #8a5a00;
-  --todo: #4d5f6b;
-  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
-  --text: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f1719;
-    --ink: #e6eeec;
-    --muted: #98aaa7;
-    --line: #26353a;
-    --accent: #8fa8ff;
-    --accent-ink: #0f1719;
-    --mark: #7a6a1c;
-    --grid: rgba(230, 238, 236, 0.04);
-    --ok: #6fd3a0;
-    --wip: #f0c565;
-    --todo: #98aaa7;
-  }
-}
+    :root {
+      color-scheme: dark;
+      --bg: #0c0d0f;
+      --panel: #14161a;
+      --text: #e9eaec;
+      --muted: #9097a0;
+      --line: #25282d;
+      --accent: #8db0ff;
+      --ok: #6fd3a0;
+      --wip: #e8b95b;
+      --font: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 1rem;
+      line-height: 1.55;
+      padding-bottom: 5rem;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-underline-offset: 0.2em; }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+    .hidden { display: none !important; }
+    .muted { color: var(--muted); }
 
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background-color: var(--bg);
-  background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 32px 32px;
-  color: var(--ink);
-  font-family: var(--text);
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-a { color: inherit; text-underline-offset: 4px; }
-a:focus-visible, summary:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-.wrap { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+    .skip { position: absolute; left: -9999px; top: 0; z-index: 40; background: var(--accent); color: var(--bg); padding: 0.75rem 1rem; font-weight: 500; }
+    .skip:focus { left: 1rem; top: 1rem; }
 
-/* ---------- En-tête et onglets ---------- */
-.site-head {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: var(--bg);
-  border-bottom: 1px solid var(--line);
-}
-.site-head .wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem 2rem;
-  flex-wrap: wrap;
-  padding-top: 0.6rem;
-  padding-bottom: 0;
-}
-.brand {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 1.3rem;
-  letter-spacing: -0.02em;
-  text-decoration: none;
-  padding-bottom: 0.6rem;
-}
-.tabs { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; overflow-x: auto; }
-.tabs a {
-  display: block;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 0.7rem 0.9rem;
-  border-bottom: 4px solid transparent;
-  white-space: nowrap;
-}
-.tabs a:hover { border-bottom-color: var(--mark); }
-.tabs a[aria-current="page"] { border-bottom-color: var(--accent); font-weight: 600; }
+    /* En-tête */
+    .site-head {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 0 1.5rem; padding: 0.5rem 1.5rem; border-bottom: 1px solid var(--line);
+    }
+    .brand { display: inline-flex; align-items: center; min-height: 44px; color: var(--text); font-weight: 600; text-decoration: none; }
+    .tabs { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+    .tabs a {
+      display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.75rem;
+      color: var(--muted); font-size: 0.875rem; font-weight: 500; text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .tabs a:hover { color: var(--text); }
+    .tabs a[aria-current="page"] { color: var(--text); border-bottom-color: var(--accent); }
+    .menu-btn { display: none; }
 
-main { padding: clamp(2.5rem, 6vw, 4.5rem) 0 4rem; }
-.page-title {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(2.6rem, 6vw, 4.8rem);
-  line-height: 1;
-  letter-spacing: -0.035em;
-  margin: 0 0 1rem;
-}
-.lead { font-size: 1.25rem; color: var(--muted); max-width: 52ch; margin: 0 0 3rem; }
-h2 {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 1.7rem;
-  letter-spacing: -0.02em;
-  margin: 3.5rem 0 1.25rem;
-}
-h2:first-of-type { margin-top: 0; }
-p { max-width: 65ch; }
+    main { max-width: 48rem; margin: 0 auto; padding: 3rem 1.5rem 2rem; }
+    main:focus { outline: none; }
 
-/* ---------- Accueil ---------- */
-.hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 1fr);
-  gap: 3rem clamp(2rem, 6vw, 5rem);
-  align-items: start;
-  margin-bottom: 4.5rem;
-}
-.hero h1 {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(2.6rem, 6.2vw, 5rem);
-  line-height: 0.98;
-  letter-spacing: -0.035em;
-  margin: 0 0 1.5rem;
-}
-.hero p { font-size: 1.2rem; color: var(--muted); margin: 0 0 1.75rem; }
-.btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-.btn {
-  display: inline-block;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 0.7rem 1.3rem;
-  border: 2px solid var(--ink);
-  border-radius: 4px;
-}
-.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.btn:hover { background: var(--mark); border-color: var(--ink); color: var(--ink); }
+    h1 { font-size: 2.074rem; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 0.5rem; }
+    .home h1 { font-size: 2.488rem; }
+    h2 { font-size: 1.44rem; line-height: 1.25; font-weight: 600; margin: 3rem 0 1rem; }
+    h3 { font-size: 1rem; line-height: 1.25; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+    .panel > :first-child { margin-top: 0; }
+    p { margin: 0 0 1rem; max-width: 40rem; }
+    ul, ol { max-width: 40rem; padding-left: 1.25rem; margin: 0 0 1rem; }
+    li { margin-bottom: 0.25rem; }
+    .lead { color: var(--muted); font-size: 1.2rem; line-height: 1.4; }
+    .small { font-size: 0.875rem; color: var(--muted); }
 
-.facts { margin: 0; border-top: 2px solid var(--ink); }
-.facts div {
-  display: grid;
-  grid-template-columns: 7rem 1fr;
-  gap: 1rem;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--line);
-}
-.facts dt { color: var(--muted); }
-.facts dd { margin: 0; font-weight: 500; }
+    /* Accueil */
+    .links { display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin: 2rem 0 3rem; }
+    .links a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 500; }
+    .facts { display: grid; grid-template-columns: 8rem 1fr; border-top: 1px solid var(--line); margin: 0; }
+    .facts dt, .facts dd { padding: 0.75rem 0; border-bottom: 1px solid var(--line); margin: 0; }
+    .facts dt { color: var(--muted); font-size: 0.875rem; }
 
-.rows { list-style: none; margin: 0; padding: 0; }
-.rows li { border-top: 1px solid var(--line); }
-.rows li:last-child { border-bottom: 1px solid var(--line); }
-.rows a {
-  display: grid;
-  grid-template-columns: 12rem 1fr;
-  gap: 0.25rem 1.5rem;
-  padding: 1.4rem 0;
-  text-decoration: none;
-}
-.rows strong { font-family: var(--display); font-size: 1.4rem; font-weight: 500; }
-.rows span { color: var(--muted); }
-.rows a:hover strong { color: var(--accent); text-decoration: underline; text-underline-offset: 5px; }
+    /* Réalisations */
+    details.proj { border-top: 1px solid var(--line); }
+    details.proj:last-of-type { border-bottom: 1px solid var(--line); }
+    details.proj summary {
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      min-height: 56px; padding: 0.5rem 0; cursor: pointer; list-style: none; font-weight: 500;
+    }
+    details.proj summary::-webkit-details-marker { display: none; }
+    details.proj summary::after { content: "+"; color: var(--muted); font-size: 1.25rem; line-height: 1; }
+    details.proj[open] summary::after { content: "\2013"; }
+    details.proj summary .date { color: var(--muted); font-weight: 400; font-size: 0.875rem; margin-left: auto; }
+    details.proj summary:hover { color: var(--accent); }
+    .proj-body { padding: 0.25rem 0 1.5rem; }
+    .proj-body dl { margin: 0; }
+    .proj-body dt { font-size: 0.875rem; color: var(--muted); margin-top: 1rem; }
+    .proj-body dd { margin: 0.25rem 0 0; max-width: 38rem; }
+    .proj-body ul { margin: 0; }
+    .tools-line { color: var(--muted); font-size: 0.875rem; margin: 0; }
 
-/* ---------- Chronologie ---------- */
-.xp { list-style: none; margin: 0; padding: 0 0 0 1.6rem; border-left: 2px solid var(--line); }
-.xp li { position: relative; padding-bottom: 2rem; }
-.xp li::before {
-  content: "";
-  position: absolute;
-  left: calc(-1.6rem - 6px);
-  top: 0.6rem;
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-.xp strong { display: block; font-size: 1.15rem; }
-.xp .when { color: var(--muted); font-size: 0.95rem; }
-.xp p { margin: 0.4rem 0 0; }
+    /* Tableaux */
+    .scroll { overflow-x: auto; margin: 0 0 1rem; }
+    table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: 0.875rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.75rem 1rem 0.75rem 0; border-bottom: 1px solid var(--line); }
+    thead th { color: var(--muted); font-weight: 500; }
+    td.where { color: var(--muted); }
+    td.st { white-space: nowrap; }
+    td.st.ok { color: var(--ok); }
+    td.st.wip { color: var(--wip); }
+    td.st.todo { color: var(--muted); }
+    .bloc { font-size: 1rem; font-weight: 600; margin: 2rem 0 0.5rem; }
 
-.two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(2rem, 5vw, 4rem); }
-.plain { margin: 0; padding-left: 1.2rem; }
-.plain li { margin-bottom: 0.45rem; max-width: 60ch; }
+    /* Contact */
+    .mail { display: inline-block; font-size: 1.2rem; font-weight: 600; overflow-wrap: anywhere; margin-bottom: 0.5rem; }
+    .btn {
+      font: inherit; font-size: 0.875rem; font-weight: 500; color: var(--text); background: transparent;
+      border: 1px solid var(--line); border-radius: 6px; min-height: 44px; padding: 0 1rem; cursor: pointer;
+    }
+    .btn:hover { border-color: var(--muted); }
+    .copy-status { color: var(--ok); font-size: 0.875rem; min-height: 1.5rem; margin: 0.5rem 0 0; }
 
-.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; margin: 0.6rem 0 0; padding: 0; }
-.tags li {
-  font-size: 0.85rem;
-  color: var(--muted);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 0.1rem 0.7rem;
-}
+    footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.875rem; padding: 1.5rem; }
 
-/* ---------- Réalisations ---------- */
-.notice {
-  border-left: 4px solid var(--mark);
-  padding: 0.2rem 0 0.2rem 1rem;
-  color: var(--muted);
-  margin: 0 0 2.5rem;
-}
-details.proj { border-top: 1px solid var(--line); }
-details.proj:last-of-type { border-bottom: 1px solid var(--line); }
-details.proj summary {
-  list-style: none;
-  cursor: pointer;
-  display: grid;
-  grid-template-columns: 4.5rem 1fr auto;
-  gap: 0.25rem 1rem;
-  align-items: baseline;
-  padding: 1.3rem 0;
-}
-details.proj summary::-webkit-details-marker { display: none; }
-details.proj summary time { color: var(--muted); font-size: 0.95rem; }
-details.proj summary h3 { font-family: var(--display); font-weight: 500; font-size: 1.4rem; line-height: 1.2; margin: 0; }
-details.proj summary::after { content: "+"; font-size: 1.6rem; color: var(--accent); line-height: 1; }
-details.proj[open] summary::after { content: "–"; }
-details.proj summary:hover h3 { color: var(--accent); }
-.proj-body { padding: 0 0 2rem 5.5rem; }
-.proj-body dl { margin: 0 0 1rem; display: grid; gap: 0.9rem; }
-.proj-body dt { font-weight: 600; }
-.proj-body dd { margin: 0; color: var(--muted); max-width: 62ch; }
-.proj-body a { color: var(--accent); }
+    /* Bouton fixe */
+    .fab {
+      position: fixed; right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); z-index: 20;
+      display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.25rem;
+      background: var(--accent); color: var(--bg); font-weight: 600; text-decoration: none; border-radius: 6px;
+    }
+    .fab:hover { opacity: 0.9; }
+    .fab:focus-visible { outline-color: var(--text); }
 
-/* ---------- Tableaux ---------- */
-.table-scroll { overflow-x: auto; margin-bottom: 1rem; }
-table { border-collapse: collapse; width: 100%; min-width: 620px; }
-th, td { text-align: left; padding: 0.8rem 1rem 0.8rem 0; border-bottom: 1px solid var(--line); vertical-align: top; }
-thead th { border-bottom: 2px solid var(--ink); font-weight: 600; }
-td.mut { color: var(--muted); }
-.st { font-weight: 600; white-space: nowrap; }
-.st.ok { color: var(--ok); }
-.st.wip { color: var(--wip); }
-.st.todo { color: var(--todo); }
-.bloc-title { font-family: var(--display); font-size: 1.3rem; font-weight: 500; margin: 2.5rem 0 0.75rem; }
+    .js .panel { display: none; }
+    .js .panel.active { display: block; }
 
-/* ---------- Contact ---------- */
-.mail {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(1.5rem, 4vw, 2.6rem);
-  letter-spacing: -0.02em;
-  text-decoration-thickness: 3px;
-  text-decoration-color: var(--mark);
-  text-underline-offset: 8px;
-  overflow-wrap: anywhere;
-}
-.mail:hover { color: var(--accent); }
+    @media (max-width: 767px) {
+      .site-head { padding: 0.25rem 1rem; }
+      main { padding: 2rem 1rem 1.5rem; }
+      .js .menu-btn { display: inline-flex; align-items: center; }
+      .js .site-head nav { width: 100%; }
+      .js .tabs { display: none; flex-direction: column; gap: 0; padding-bottom: 0.5rem; }
+      .js .tabs.open { display: flex; }
+      .js .tabs a { border-bottom: 1px solid var(--line); padding: 0 0.25rem; font-size: 1rem; }
+      .facts { grid-template-columns: 1fr; }
+      .facts dt { border-bottom: 0; padding-bottom: 0; }
+      .facts dd { padding-top: 0.25rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; padding: 1.5rem 0 2.5rem; }
-
-@media (max-width: 800px) {
-  .hero, .two { grid-template-columns: 1fr; }
-  .rows a { grid-template-columns: 1fr; }
-  details.proj summary { grid-template-columns: 1fr auto; }
-  details.proj summary time { grid-column: 1 / -1; }
-  .proj-body { padding-left: 0; }
-  .facts div { grid-template-columns: 6rem 1fr; }
-}
-
-/* ---------- Thème manuel ---------- */
-:root[data-theme="dark"] {
-  --bg: #0f1719; --ink: #e6eeec; --muted: #98aaa7; --line: #26353a;
-  --accent: #8fa8ff; --accent-ink: #0f1719; --mark: #7a6a1c; --grid: rgba(230,238,236,0.04);
-  --ok: #6fd3a0; --wip: #f0c565; --todo: #98aaa7;
-}
-:root[data-theme="light"] {
-  --bg: #eef2f1; --ink: #14202b; --muted: #4d5f6b; --line: #c5d0ce;
-  --accent: #2447d6; --accent-ink: #ffffff; --mark: #f6d55c; --grid: rgba(20,32,43,0.045);
-  --ok: #1d6b45; --wip: #8a5a00; --todo: #4d5f6b;
-}
-.hidden { display: none !important; }
-.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-
-.brand-row { display: flex; align-items: center; gap: 1rem; padding-bottom: 0.6rem; }
-.brand-row .brand { padding-bottom: 0; }
-.chip {
-  font: inherit; font-size: 0.9rem; font-weight: 500; cursor: pointer;
-  color: var(--ink); background: transparent;
-  border: 1px solid var(--line); border-radius: 999px; padding: 0.25rem 0.85rem;
-}
-.chip:hover { border-color: var(--ink); }
-.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.chip:focus-visible, .field:focus-visible, .term-in input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-
-/* ---------- Terminal ---------- */
-.term {
-  background: #0e1a23; color: #dbe7e4; border-radius: 8px;
-  border: 1px solid #22323d; overflow: hidden; margin-bottom: 1rem;
-  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 0.95rem;
-}
-.term-bar { display: flex; gap: 0.4rem; padding: 0.6rem 0.9rem; border-bottom: 1px solid #22323d; color: #7f95a0; font-size: 0.8rem; align-items: center; }
-.term-bar i { width: 10px; height: 10px; border-radius: 50%; background: #2c4050; display: inline-block; }
-.term-bar span { margin-left: 0.5rem; }
-.term-out { height: 15rem; overflow-y: auto; padding: 0.9rem 1rem 0.3rem; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
-.term-out .cmd { color: #f6d55c; }
-.term-out .err { color: #ff9d8a; }
-.term-in { display: flex; align-items: center; gap: 0.6rem; padding: 0.3rem 1rem 0.9rem; }
-.term-in span { color: #f6d55c; }
-.term-in input { flex: 1; min-width: 0; background: transparent; border: 0; color: inherit; font: inherit; padding: 0.3rem 0; }
-.term-in input:focus-visible { outline-offset: 4px; border-radius: 2px; }
-.term-help { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 3.5rem; align-items: center; }
-.term-help small { color: var(--muted); margin-right: 0.25rem; }
-
-/* ---------- Barres de contrôle ---------- */
-.controls { display: flex; flex-wrap: wrap; gap: 0.6rem 0.5rem; align-items: center; margin: 0 0 2rem; }
-.controls .sep { width: 1px; height: 1.4rem; background: var(--line); margin: 0 0.4rem; }
-.field {
-  font: inherit; color: var(--ink); background: transparent;
-  border: 1px solid var(--line); border-radius: 4px; padding: 0.55rem 0.75rem; width: 100%; max-width: 30rem;
-}
-.field:hover { border-color: var(--ink); }
-textarea.field { min-height: 8rem; resize: vertical; }
-.empty { color: var(--muted); padding: 1rem 0; }
-
-/* ---------- Progression ---------- */
-.progress { display: flex; height: 14px; border-radius: 7px; overflow: hidden; background: var(--line); margin: 0.75rem 0 0.6rem; max-width: 40rem; }
-.progress i { display: block; height: 100%; transition: width 0.4s ease; }
-.progress .p-ok { background: var(--ok); }
-.progress .p-wip { background: var(--wip); }
-.progress-legend { color: var(--muted); font-size: 0.95rem; margin: 0 0 2rem; }
-
-/* ---------- Contact ---------- */
-.mail-row { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; margin-bottom: 0.5rem; }
-.copy-status { color: var(--ok); font-weight: 600; min-height: 1.5rem; margin: 0.25rem 0 0; }
-.form { display: grid; gap: 1rem; max-width: 34rem; }
-.form label { display: grid; gap: 0.3rem; font-weight: 600; }
-.form .note { color: var(--muted); font-size: 0.9rem; margin: 0; }
-button.btn { font: inherit; font-weight: 600; cursor: pointer; color: var(--ink); background: transparent; width: fit-content; }
-button.btn.primary { color: var(--accent-ink); }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .progress i { transition: none; } }
-
-.js .panel { display: none; }
-.js .panel.active { display: block; }
-.tabs a:focus-visible { outline-offset: -3px; }
-
-  
-/* ---------- Bouton Me contacter fixe ---------- */
-.fab {
-  position: fixed;
-  right: max(1rem, env(safe-area-inset-right));
-  bottom: max(1rem, env(safe-area-inset-bottom));
-  z-index: 20;
-  background: var(--accent);
-  color: var(--accent-ink);
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.75rem 1.3rem;
-  border-radius: 999px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
-}
-.fab:hover { background: var(--mark); color: var(--ink); }
-.fab:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-body { padding-bottom: 4.5rem; }
+    @media print {
+      :root { --bg: #fff; --panel: #fff; --text: #000; --muted: #444; --line: #bbb; --accent: #000; --ok: #000; --wip: #000; }
+      .skip, .site-head, .fab, .btn, .menu-btn { display: none !important; }
+      body { padding-bottom: 0; }
+      .js .panel { display: block !important; margin-bottom: 2rem; }
+      h1, h2 { break-after: avoid; }
+    }
   </style>
 </head>
 <body>
+  <a class="skip" href="#main" id="skipLink">Aller au contenu</a>
+
   <header class="site-head">
-    <div class="wrap">
-      <div class="brand-row"><a class="brand" href="#index">Tristan Fahrasmane</a><button class="chip" id="themeBtn" type="button" aria-pressed="false">Mode sombre</button></div>
-      <nav aria-label="Sections du portfolio">
-        <ul class="tabs">
-<li><a href="#index" data-tab="index">Accueil</a></li>
-<li><a href="#parcours" data-tab="parcours">Parcours</a></li>
-<li><a href="#realisations" data-tab="realisations">Réalisations</a></li>
-<li><a href="#competences" data-tab="competences">Compétences</a></li>
-<li><a href="#veille" data-tab="veille">Veille</a></li>
-<li><a href="#contact" data-tab="contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+    <a class="brand" href="#index">Tristan Fahrasmane</a>
+    <button class="btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainTabs">Menu</button>
+    <nav aria-label="Sections du portfolio">
+      <ul class="tabs" id="mainTabs">
+        <li><a href="#index" data-tab="index">Accueil</a></li>
+        <li><a href="#parcours" data-tab="parcours">Parcours</a></li>
+        <li><a href="#realisations" data-tab="realisations">Réalisations</a></li>
+        <li><a href="#competences" data-tab="competences">Compétences</a></li>
+        <li><a href="#veille" data-tab="veille">Veille</a></li>
+        <li><a href="#contact" data-tab="contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main>
-    <div class="wrap">
-<section class="panel" id="index" aria-label="Accueil">
+  <main id="main" tabindex="-1">
 
-      <div class="hero">
-        <div>
-          <h1>Je fais tourner les systèmes et les réseaux, et j'aide ceux qui les utilisent.</h1>
-          <p>Étudiant en BTS SIO option SISR, je suis en alternance comme technicien relation utilisateur.
-             Ce site rassemble mes réalisations, mes compétences et ma veille technologique.</p>
-          <div class="btns">
-            <a class="btn primary" href="#realisations">Voir mes réalisations</a>
-            <a class="btn" href="#contact">Me contacter</a>
-          </div>
-        </div>
-        <dl class="facts">
-          <div><dt>Formation</dt><dd>BTS SIO, 1re année</dd></div>
-          <div><dt>Option</dt><dd>SISR (systèmes et réseaux)</dd></div>
-          <div><dt>Alternance</dt><dd>Technicien relation utilisateur</dd></div>
-          <div><dt>Entreprise</dt><dd>Nom de l'entreprise</dd></div>
-          <div><dt>Ville</dt><dd>Paris</dd></div>
-        </dl>
+    <!-- ===================== ACCUEIL ===================== -->
+    <section class="panel home" id="index" aria-label="Accueil">
+      <h1>Tristan Fahrasmane</h1>
+      <p class="lead">Étudiant en BTS SIO option SISR, alternant technicien relation utilisateur au SDIS 77.</p>
+      <p>Je me forme à l'administration des systèmes et des réseaux. Au quotidien, je réponds aux utilisateurs, je prépare leurs postes et je gère leurs accès. Ce site rassemble mes projets, mes compétences et ma veille technologique.</p>
+
+      <div class="links">
+        <a href="#realisations">Mes réalisations</a>
+        <a href="cv.pdf" download>Mon CV</a>
       </div>
 
-      <h2>Interroge mon terminal</h2>
-      <p>Tape une commande ou clique sur l'une des suggestions pour découvrir mon profil.</p>
-      <div class="term">
-        <div class="term-bar"><i></i><i></i><i></i><span>tristan@portfolio</span></div>
-        <div class="term-out" id="termOut" role="log" aria-live="polite"></div>
-        <div class="term-in">
-          <span aria-hidden="true">$</span>
-          <label class="sr-only" for="termInput">Commande</label>
-          <input id="termInput" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="help">
-        </div>
-      </div>
-      <div class="term-help" id="termChips">
-        <small>Suggestions :</small>
-      </div>
+      <dl class="facts">
+        <dt>Formation</dt><dd>BTS SIO option SISR, 1re année</dd>
+        <dt>Alternance</dt><dd>Technicien relation utilisateur, SDIS 77</dd>
+        <dt>E-mail</dt><dd><a href="mailto:tristan.fahrasmane@cfautec.fr">tristan.fahrasmane@cfautec.fr</a></dd>
+      </dl>
+    </section>
 
-      <h2>Dans ce portfolio</h2>
-      <ul class="rows">
-        <li><a href="#parcours"><strong>Parcours</strong><span>Ma formation et mes missions en alternance.</span></a></li>
-        <li><a href="#realisations"><strong>Réalisations</strong><span>Les projets menés en cours et en entreprise, avec le contexte, les outils et le résultat.</span></a></li>
-        <li><a href="#competences"><strong>Compétences</strong><span>Le tableau de synthèse relié au référentiel du BTS SIO.</span></a></li>
-        <li><a href="#veille"><strong>Veille</strong><span>Mon sujet de veille technologique, mes sources et mon journal.</span></a></li>
-        <li><a href="#contact"><strong>Contact</strong><span>Mon e-mail, mon CV et mes profils en ligne.</span></a></li>
-      </ul>
-
-</section>
-<section class="panel" id="parcours" aria-label="Parcours">
-
-      <h1 class="page-title">Parcours</h1>
-      <p class="lead">Une formation en systèmes et réseaux, complétée par un poste de terrain au contact des utilisateurs.</p>
+    <!-- ===================== PARCOURS ===================== -->
+    <section class="panel" id="parcours" aria-label="Parcours">
+      <h1>Parcours</h1>
 
       <h2>Alternance</h2>
-      <ol class="xp">
-        <li>
-          <strong>Technicien relation utilisateur, Nom de l'entreprise</strong>
-          <span class="when">2026 – aujourd'hui</span>
-          <p>Premier point de contact des utilisateurs pour leurs incidents et leurs demandes.</p>
-        </li>
-      </ol>
-
-      <div class="two">
-        <div>
-          <h3>Missions</h3>
-          <ul class="plain">
-            <li>Répondre aux utilisateurs par téléphone, e-mail et outil de tickets.</li>
-            <li>Diagnostiquer et résoudre les incidents de niveau 1, puis escalader si besoin.</li>
-            <li>Préparer, installer et configurer les postes de travail.</li>
-            <li>Créer et modifier les comptes et les droits utilisateurs.</li>
-            <li>Tenir à jour l'inventaire du matériel et la documentation.</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Environnement technique</h3>
-          <ul class="tags">
-            <li>Windows 10 / 11</li><li>Active Directory</li><li>Microsoft 365</li>
-            <li>GLPI</li><li>Prise en main à distance</li><li>Imprimantes et réseau local</li>
-          </ul>
-        </div>
-      </div>
+      <p><strong>Technicien relation utilisateur</strong>, SDIS 77 (Service départemental d'incendie et de secours de Seine-et-Marne), depuis [mois] 2026.</p>
+      <!-- Important : ne publie aucune information sensible sur le SDIS 77 (architecture réseau, adresses IP, noms de serveurs, procédures de sécurité, données opérationnelles). Reste sur des descriptions générales. -->
+      <p>Je suis le premier contact des utilisateurs quand ils ont un problème ou une demande informatique. Mes missions :</p>
+      <ul>
+        <li>répondre aux utilisateurs par téléphone, par mail et dans l'outil de tickets ;</li>
+        <li>résoudre les incidents courants et passer la main au niveau 2 quand c'est nécessaire ;</li>
+        <li>préparer et installer les postes de travail ;</li>
+        <li>créer et modifier des comptes et des droits ;</li>
+        <li>mettre à jour l'inventaire du matériel et la documentation.</li>
+      </ul>
+      <p class="small">Outils au quotidien : Windows, Active Directory, GLPI, prise en main à distance. [Adapte cette liste à ce que tu utilises vraiment.]</p>
 
       <h2>Formation</h2>
-      <ol class="xp">
-        <li>
-          <strong>BTS SIO, option SISR, Nom de l'établissement</strong>
-          <span class="when">2026 – 2028</span>
-          <p>Services informatiques aux organisations, option Solutions d'infrastructure, systèmes et réseaux : administration système, réseau, cybersécurité et support.</p>
-        </li>
-        <li>
-          <strong>Baccalauréat, Filière</strong>
-          <span class="when">Année d'obtention</span>
-          <p>Mention éventuelle et spécialités suivies.</p>
-        </li>
-      </ol>
+      <p><strong>BTS SIO option SISR</strong>, [nom de l'établissement], 2026 à 2028.</p>
+      <p>SISR veut dire « Solutions d'infrastructure, systèmes et réseaux ». L'option forme à installer, administrer et sécuriser des serveurs et des réseaux, et à assurer le support des utilisateurs.</p>
+      <p><strong>Avant :</strong> [baccalauréat ou diplôme précédent, année].</p>
+    </section>
 
-</section>
-<section class="panel" id="realisations" aria-label="Réalisations">
+    <!-- ===================== REALISATIONS ===================== -->
+    <section class="panel" id="realisations" aria-label="Réalisations">
+      <h1>Réalisations</h1>
+      <p class="lead">Chaque projet indique le contexte, ce que j'ai fait, les outils utilisés et le résultat.</p>
+      <!-- À MODIFIER : ces projets sont des exemples. Garde ceux que tu as vraiment faits et complète les passages entre crochets. -->
 
-      <h1 class="page-title">Réalisations</h1>
-      <p class="lead">Chaque projet indique le contexte, ce que j'ai fait, les outils utilisés et le résultat. Clique sur un titre pour l'ouvrir.</p>
-      <p class="notice">Les projets ci-dessous sont des exemples : remplace-les par tes propres réalisations avant de publier.</p>
-
-      <div class="controls" id="projControls">
-        <button class="chip" type="button" data-group="all" aria-pressed="true">Tout</button>
-        <button class="chip" type="button" data-group="entreprise" aria-pressed="false">En entreprise</button>
-        <button class="chip" type="button" data-group="formation" aria-pressed="false">En formation</button>
-        <span class="sep" aria-hidden="true"></span>
-        <button class="chip" type="button" id="toggleAll">Tout ouvrir</button>
-      </div>
-      <label class="sr-only" for="projSearch">Rechercher un projet ou un outil</label>
-      <input class="field" id="projSearch" type="search" placeholder="Rechercher un outil ou un mot-clé (GLPI, VLAN, DNS…)" style="margin-bottom:2rem">
-      <p class="empty hidden" id="projEmpty">Aucun projet ne correspond à ta recherche.</p>
-
-      <div class="group" data-group="entreprise">
-      <h2>En entreprise</h2>
+      <h2>En alternance</h2>
 
       <details class="proj">
-        <summary><time datetime="2026">2026</time><h3>Traitement des tickets de support</h3></summary>
+        <summary>Traiter les tickets d'assistance<span class="date">2026</span></summary>
         <div class="proj-body">
-          <ul class="tags"><li>GLPI</li><li>Support N1</li></ul>
+          <p class="tools-line">GLPI, prise en main à distance, Active Directory</p>
           <dl>
-            <div><dt>Contexte</dt><dd>L'entreprise reçoit des demandes d'assistance de ses utilisateurs via un outil de tickets.</dd></div>
-            <div><dt>Objectifs</dt><dd>Résoudre rapidement les incidents courants et garder un historique clair.</dd></div>
-            <div><dt>Ce que j'ai fait</dt><dd><ul class="plain"><li>Prise en charge et qualification des tickets (priorité, catégorie).</li><li>Diagnostic et résolution : messagerie, impression, accès, poste lent.</li><li>Escalade vers le niveau 2 avec un compte rendu précis.</li><li>Rédaction de fiches de procédure pour les problèmes récurrents.</li></ul></dd></div>
-            <div><dt>Outils</dt><dd>GLPI, prise en main à distance, Active Directory.</dd></div>
-            <div><dt>Résultat</dt><dd>À compléter : nombre de tickets traités, délai moyen, retours des utilisateurs.</dd></div>
+            <dt>Contexte</dt>
+            <dd>Quand un utilisateur a un problème informatique, il ouvre un ticket ou appelle le support.</dd>
+            <dt>Ce que j'ai fait</dt>
+            <dd><ul>
+              <li>Je prends en charge les tickets et je choisis leur priorité.</li>
+              <li>Je dépanne à distance ou sur place : messagerie, impression, mot de passe, accès aux dossiers.</li>
+              <li>Quand je ne peux pas régler le problème, je le transmets au niveau 2 avec ce que j'ai déjà testé.</li>
+              <li>J'écris une fiche quand le même problème revient souvent.</li>
+            </ul></dd>
+            <dt>Résultat</dt>
+            <dd>[nombre de tickets traités, délai moyen, ce que tu as retenu]</dd>
           </dl>
-          
-        </div>
-      </details>
-      <details class="proj">
-        <summary><time datetime="2026">2026</time><h3>Préparation et déploiement de postes de travail</h3></summary>
-        <div class="proj-body">
-          <ul class="tags"><li>Windows 11</li><li>Déploiement</li></ul>
-          <dl>
-            <div><dt>Contexte</dt><dd>Arrivée de nouveaux collaborateurs et renouvellement de postes.</dd></div>
-            <div><dt>Objectifs</dt><dd>Fournir un poste prêt à l'emploi, conforme à la configuration de l'entreprise.</dd></div>
-            <div><dt>Ce que j'ai fait</dt><dd><ul class="plain"><li>Installation de Windows et des logiciels métier.</li><li>Jonction au domaine et application des paramètres de sécurité.</li><li>Enregistrement du matériel dans l'inventaire.</li><li>Remise du poste et accompagnement de l'utilisateur.</li></ul></dd></div>
-            <div><dt>Outils</dt><dd>Windows 11, Active Directory, GLPI.</dd></div>
-            <div><dt>Résultat</dt><dd>À compléter : nombre de postes, temps de préparation, procédure documentée.</dd></div>
-          </dl>
-          
-        </div>
-      </details>
-      <details class="proj">
-        <summary><time datetime="2026">2026</time><h3>Gestion des comptes et des droits</h3></summary>
-        <div class="proj-body">
-          <ul class="tags"><li>Active Directory</li><li>Droits d'accès</li></ul>
-          <dl>
-            <div><dt>Contexte</dt><dd>Entrées, départs et changements de service des collaborateurs.</dd></div>
-            <div><dt>Objectifs</dt><dd>Donner les bons accès aux bonnes personnes, et seulement ceux-là.</dd></div>
-            <div><dt>Ce que j'ai fait</dt><dd><ul class="plain"><li>Création, modification et désactivation de comptes.</li><li>Ajout des utilisateurs aux groupes de sécurité et de messagerie.</li><li>Vérification des droits sur les dossiers partagés.</li></ul></dd></div>
-            <div><dt>Outils</dt><dd>Active Directory, Microsoft 365.</dd></div>
-            <div><dt>Résultat</dt><dd>À compléter : ce que tu as amélioré ou appris.</dd></div>
-          </dl>
-          
         </div>
       </details>
 
-      </div>
+      <details class="proj">
+        <summary>Préparer des postes de travail<span class="date">2026</span></summary>
+        <div class="proj-body">
+          <p class="tools-line">Windows, Active Directory, GLPI</p>
+          <dl>
+            <dt>Contexte</dt>
+            <dd>Arrivée de nouveaux agents et remplacement de postes anciens.</dd>
+            <dt>Ce que j'ai fait</dt>
+            <dd><ul>
+              <li>J'installe Windows et les logiciels demandés.</li>
+              <li>Je joins le poste au domaine et je vérifie les paramètres de sécurité.</li>
+              <li>J'ajoute le matériel à l'inventaire.</li>
+              <li>Je remets le poste à l'utilisateur et je lui explique les premières étapes.</li>
+            </ul></dd>
+            <dt>Résultat</dt>
+            <dd>[nombre de postes préparés, temps par poste]</dd>
+          </dl>
+        </div>
+      </details>
 
-      <div class="group" data-group="formation">
+      <details class="proj">
+        <summary>Gérer des comptes et des droits<span class="date">2026</span></summary>
+        <div class="proj-body">
+          <p class="tools-line">Active Directory</p>
+          <dl>
+            <dt>Contexte</dt>
+            <dd>Chaque arrivée, départ ou changement de service demande de modifier des accès.</dd>
+            <dt>Ce que j'ai fait</dt>
+            <dd><ul>
+              <li>Je crée, modifie et désactive des comptes.</li>
+              <li>J'ajoute les personnes aux bons groupes (dossiers partagés, messagerie).</li>
+              <li>Je vérifie que chacun n'a accès qu'à ce dont il a besoin.</li>
+            </ul></dd>
+            <dt>Résultat</dt>
+            <dd>[ce que ça a changé pour toi ou pour l'équipe]</dd>
+          </dl>
+        </div>
+      </details>
+
       <h2>En formation</h2>
 
       <details class="proj">
-        <summary><time datetime="2026">2026</time><h3>Déploiement d'un domaine Active Directory</h3></summary>
+        <summary>Monter un domaine Active Directory<span class="date">2026</span></summary>
         <div class="proj-body">
-          <ul class="tags"><li>Windows Server</li><li>AD DS</li><li>DNS</li><li>DHCP</li><li>GPO</li></ul>
+          <p class="tools-line">Windows Server 2022, AD DS, DNS, DHCP, GPO, VirtualBox</p>
           <dl>
-            <div><dt>Contexte</dt><dd>Mise en place d'une infrastructure d'entreprise fictive en maquette virtuelle.</dd></div>
-            <div><dt>Objectifs</dt><dd>Centraliser les comptes, les noms et les adresses IP d'un petit réseau.</dd></div>
-            <div><dt>Ce que j'ai fait</dt><dd><ul class="plain"><li>Installation de Windows Server dans une machine virtuelle.</li><li>Création du domaine, des unités d'organisation, des utilisateurs et des groupes.</li><li>Configuration du DNS et du DHCP.</li><li>Création de stratégies de groupe (GPO) : fond d'écran, lecteur réseau, restrictions.</li><li>Jonction d'un poste client au domaine et tests.</li></ul></dd></div>
-            <div><dt>Outils</dt><dd>VirtualBox ou VMware, Windows Server 2022, Windows 11.</dd></div>
-            <div><dt>Résultat</dt><dd>Un poste client s'authentifie sur le domaine et reçoit ses paramètres automatiquement.</dd></div>
+            <dt>Contexte</dt>
+            <dd>TP en maquette virtuelle : simuler le réseau d'une petite entreprise.</dd>
+            <dt>Objectif</dt>
+            <dd>Centraliser les comptes, les noms et les adresses IP.</dd>
+            <dt>Ce que j'ai fait</dt>
+            <dd><ul>
+              <li>Installation de Windows Server dans une machine virtuelle.</li>
+              <li>Création du domaine, des unités d'organisation, des utilisateurs et des groupes.</li>
+              <li>Configuration du DNS et du DHCP.</li>
+              <li>Création de stratégies de groupe (fond d'écran, lecteur réseau, restrictions).</li>
+              <li>Jonction d'un poste client et tests de connexion.</li>
+            </ul></dd>
+            <dt>Résultat</dt>
+            <dd>Le poste client ouvre une session sur le domaine et reçoit ses paramètres tout seul.</dd>
           </dl>
-          <p><a href="docs/active-directory.pdf">Voir la documentation (PDF)</a></p>
+          <!-- Quand le PDF est dans le dépôt, décommente : <p><a href="docs/active-directory.pdf">Documentation (PDF)</a></p> -->
         </div>
       </details>
+
       <details class="proj">
-        <summary><time datetime="2026">2026</time><h3>Installation de GLPI pour l'inventaire et les tickets</h3></summary>
+        <summary>Installer GLPI sur un serveur Debian<span class="date">2026</span></summary>
         <div class="proj-body">
-          <ul class="tags"><li>Debian</li><li>Apache</li><li>MariaDB</li><li>GLPI</li></ul>
+          <p class="tools-line">Debian 12, Apache, PHP, MariaDB, GLPI</p>
           <dl>
-            <div><dt>Contexte</dt><dd>Besoin d'un outil pour suivre le parc informatique et les demandes.</dd></div>
-            <div><dt>Objectifs</dt><dd>Installer et configurer un serveur GLPI fonctionnel.</dd></div>
-            <div><dt>Ce que j'ai fait</dt><dd><ul class="plain"><li>Installation de Debian, Apache, PHP et MariaDB.</li><li>Installation et configuration de GLPI.</li><li>Création d'entités, de profils et d'utilisateurs.</li><li>Import d'un inventaire de test et création de tickets.</li></ul></dd></div>
-            <div><dt>Outils</dt><dd>Debian 12, Apache, MariaDB, GLPI.</dd></div>
-            <div><dt>Résultat</dt><dd>Un serveur GLPI accessible depuis le réseau, avec inventaire et gestion de tickets.</dd></div>
+            <dt>Contexte</dt>
+            <dd>TP : mettre en place un outil de gestion de parc et de tickets.</dd>
+            <dt>Ce que j'ai fait</dt>
+            <dd><ul>
+              <li>Installation de Debian, Apache, PHP et MariaDB.</li>
+              <li>Installation et configuration de GLPI.</li>
+              <li>Création d'entités, de profils et d'utilisateurs.</li>
+              <li>Import d'un inventaire de test et création de tickets.</li>
+            </ul></dd>
+            <dt>Résultat</dt>
+            <dd>Un serveur GLPI accessible depuis le réseau, avec inventaire et suivi de tickets.</dd>
           </dl>
-          <p><a href="docs/glpi.pdf">Voir la documentation (PDF)</a></p>
+          <!-- <p><a href="docs/glpi.pdf">Documentation (PDF)</a></p> -->
         </div>
       </details>
+
       <details class="proj">
-        <summary><time datetime="2026">2026</time><h3>Segmentation d'un réseau avec des VLAN</h3></summary>
+        <summary>Séparer un réseau avec des VLAN<span class="date">2026</span></summary>
         <div class="proj-body">
-          <ul class="tags"><li>Cisco</li><li>Packet Tracer</li><li>VLAN</li><li>Routage</li></ul>
+          <p class="tools-line">Cisco Packet Tracer, VLAN, trunk, routage inter-VLAN</p>
           <dl>
-            <div><dt>Contexte</dt><dd>Un réseau plat mélange tous les services de l'entreprise.</dd></div>
-            <div><dt>Objectifs</dt><dd>Séparer les flux par service pour gagner en sécurité et en clarté.</dd></div>
-            <div><dt>Ce que j'ai fait</dt><dd><ul class="plain"><li>Création du schéma réseau et du plan d'adressage.</li><li>Configuration des VLAN et des ports en mode trunk.</li><li>Routage inter-VLAN et tests de communication.</li></ul></dd></div>
-            <div><dt>Outils</dt><dd>Cisco Packet Tracer.</dd></div>
-            <div><dt>Résultat</dt><dd>Les services communiquent selon les règles prévues, et pas au-delà.</dd></div>
+            <dt>Contexte</dt>
+            <dd>Dans le réseau de départ, tous les services étaient mélangés.</dd>
+            <dt>Ce que j'ai fait</dt>
+            <dd><ul>
+              <li>Schéma du réseau et plan d'adressage.</li>
+              <li>Configuration des VLAN et des liaisons trunk.</li>
+              <li>Routage entre VLAN et tests de communication.</li>
+            </ul></dd>
+            <dt>Résultat</dt>
+            <dd>Les services communiquent seulement comme prévu.</dd>
           </dl>
-          <p><a href="docs/vlan.pdf">Voir la documentation (PDF)</a></p>
+          <!-- <p><a href="docs/vlan.pdf">Documentation (PDF)</a></p> -->
         </div>
       </details>
-      </div>
-</section>
-<section class="panel" id="competences" aria-label="Compétences">
+    </section>
 
-      <h1 class="page-title">Compétences</h1>
-      <p class="lead">Mes compétences reliées aux trois blocs du référentiel du BTS SIO, avec l'endroit où je les ai mises en pratique.</p>
-      <p class="notice">Les statuts sont indicatifs : ajuste-les au fil de ta formation.</p>
+    <!-- ===================== COMPETENCES ===================== -->
+    <section class="panel" id="competences" aria-label="Compétences">
+      <h1>Compétences</h1>
+      <p class="lead">Les compétences du référentiel du BTS SIO, avec l'endroit où je les ai travaillées.</p>
+      <p id="skillSummary"></p>
+      <!-- À MODIFIER : ajuste les statuts (classes ok, wip, todo) au fil de l'année. -->
 
-      <div id="skillSummary">
-        <div class="progress" role="img" aria-label="Progression des compétences"><i class="p-ok" id="barOk"></i><i class="p-wip" id="barWip"></i></div>
-        <p class="progress-legend" id="skillLegend"></p>
-      </div>
-      <div class="controls" id="skillControls">
-        <button class="chip" type="button" data-status="all" aria-pressed="true">Toutes</button>
-        <button class="chip" type="button" data-status="ok" aria-pressed="false">Acquises</button>
-        <button class="chip" type="button" data-status="wip" aria-pressed="false">En cours</button>
-        <button class="chip" type="button" data-status="todo" aria-pressed="false">À venir</button>
-      </div>
+      <h2 class="bloc">Bloc 1 : support et mise à disposition de services informatiques</h2>
+      <div class="scroll"><table>
+        <thead><tr><th scope="col">Compétence</th><th scope="col">Où je l'ai travaillée</th><th scope="col">Statut</th></tr></thead>
+        <tbody>
+          <tr><td>Gérer le patrimoine informatique</td><td class="where">Inventaire GLPI, préparation de postes</td><td class="st wip">En cours</td></tr>
+          <tr><td>Répondre aux incidents et aux demandes d'assistance et d'évolution</td><td class="where">Tickets en alternance</td><td class="st ok">Acquise</td></tr>
+          <tr><td>Développer la présence en ligne de l'organisation</td><td class="where">[à renseigner]</td><td class="st todo">À voir</td></tr>
+          <tr><td>Travailler en mode projet</td><td class="where">Projets de groupe en cours</td><td class="st wip">En cours</td></tr>
+          <tr><td>Mettre à disposition des utilisateurs un service informatique</td><td class="where">Domaine AD, GLPI</td><td class="st wip">En cours</td></tr>
+          <tr><td>Organiser son développement professionnel</td><td class="where">Portfolio, veille</td><td class="st wip">En cours</td></tr>
+        </tbody>
+      </table></div>
 
-      <h2 class="bloc-title">Bloc 1 · Support et mise à disposition de services informatiques</h2>
+      <h2 class="bloc">Bloc 2 : administration des systèmes et des réseaux (option SISR)</h2>
+      <div class="scroll"><table>
+        <thead><tr><th scope="col">Compétence</th><th scope="col">Où je l'ai travaillée</th><th scope="col">Statut</th></tr></thead>
+        <tbody>
+          <tr><td>Concevoir une solution d'infrastructure réseau</td><td class="where">Schéma et plan d'adressage des VLAN</td><td class="st wip">En cours</td></tr>
+          <tr><td>Installer, tester et déployer une solution d'infrastructure réseau</td><td class="where">Domaine AD, GLPI, Packet Tracer</td><td class="st wip">En cours</td></tr>
+          <tr><td>Exploiter, dépanner et superviser une solution d'infrastructure réseau</td><td class="where">Dépannage en alternance</td><td class="st wip">En cours</td></tr>
+        </tbody>
+      </table></div>
 
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th scope="col">Compétence</th><th scope="col">Où je l'ai mise en œuvre</th><th scope="col">Statut</th></tr></thead>
-          <tbody>
-<tr><td>Gérer le patrimoine informatique</td><td class="mut">Inventaire GLPI, déploiement de postes</td><td class="st wip">◐ En cours</td></tr>
-<tr><td>Répondre aux incidents et aux demandes d'assistance et d'évolution</td><td class="mut">Traitement des tickets en alternance</td><td class="st ok">✓ Acquis</td></tr>
-<tr><td>Développer la présence en ligne de l'organisation</td><td class="mut">À renseigner</td><td class="st todo">○ À venir</td></tr>
-<tr><td>Travailler en mode projet</td><td class="mut">Projets de formation en équipe</td><td class="st wip">◐ En cours</td></tr>
-<tr><td>Mettre à disposition des utilisateurs un service informatique</td><td class="mut">Domaine AD, GLPI</td><td class="st wip">◐ En cours</td></tr>
-<tr><td>Organiser son développement professionnel</td><td class="mut">Portfolio, veille technologique</td><td class="st wip">◐ En cours</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <h2 class="bloc-title">Bloc 2 · Administration des systèmes et des réseaux (option SISR)</h2>
+      <h2 class="bloc">Bloc 3 : cybersécurité des services informatiques</h2>
+      <div class="scroll"><table>
+        <thead><tr><th scope="col">Compétence</th><th scope="col">Où je l'ai travaillée</th><th scope="col">Statut</th></tr></thead>
+        <tbody>
+          <tr><td>Protéger les données à caractère personnel</td><td class="where">[à renseigner]</td><td class="st todo">À voir</td></tr>
+          <tr><td>Préserver l'identité numérique de l'organisation</td><td class="where">[à renseigner]</td><td class="st todo">À voir</td></tr>
+          <tr><td>Sécuriser les équipements et les usages des utilisateurs</td><td class="where">GPO, gestion des droits</td><td class="st wip">En cours</td></tr>
+          <tr><td>Garantir la disponibilité, l'intégrité et la confidentialité des services et des données face aux cyberattaques</td><td class="where">[à renseigner]</td><td class="st todo">À voir</td></tr>
+          <tr><td>Assurer la cybersécurité d'une solution d'infrastructure réseau, système, applicatif</td><td class="where">[à renseigner]</td><td class="st todo">À voir</td></tr>
+        </tbody>
+      </table></div>
 
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th scope="col">Compétence</th><th scope="col">Où je l'ai mise en œuvre</th><th scope="col">Statut</th></tr></thead>
-          <tbody>
-<tr><td>Concevoir une solution d'infrastructure réseau</td><td class="mut">Schéma et plan d'adressage VLAN</td><td class="st wip">◐ En cours</td></tr>
-<tr><td>Installer, tester et déployer une solution d'infrastructure réseau</td><td class="mut">Domaine AD, GLPI, Packet Tracer</td><td class="st wip">◐ En cours</td></tr>
-<tr><td>Exploiter, dépanner et superviser une solution d'infrastructure réseau</td><td class="mut">Dépannage en alternance</td><td class="st wip">◐ En cours</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <h2 class="bloc-title">Bloc 3 · Cybersécurité des services informatiques</h2>
+      <h2>Outils</h2>
+      <ul>
+        <li><strong>Systèmes :</strong> Windows 10 et 11, Windows Server, Debian</li>
+        <li><strong>Réseau :</strong> VLAN, DHCP, DNS, routage, Cisco Packet Tracer</li>
+        <li><strong>Autres :</strong> Active Directory, GLPI, VirtualBox, PowerShell, Bash</li>
+        <li><strong>Langues :</strong> français, anglais technique</li>
+      </ul>
+    </section>
 
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th scope="col">Compétence</th><th scope="col">Où je l'ai mise en œuvre</th><th scope="col">Statut</th></tr></thead>
-          <tbody>
-<tr><td>Protéger les données à caractère personnel</td><td class="mut">À renseigner</td><td class="st todo">○ À venir</td></tr>
-<tr><td>Préserver l'identité numérique de l'organisation</td><td class="mut">À renseigner</td><td class="st todo">○ À venir</td></tr>
-<tr><td>Sécuriser les équipements et les usages des utilisateurs</td><td class="mut">GPO, gestion des droits</td><td class="st wip">◐ En cours</td></tr>
-<tr><td>Garantir la disponibilité, l'intégrité et la confidentialité des services informatiques et des données face aux cyberattaques</td><td class="mut">À renseigner</td><td class="st todo">○ À venir</td></tr>
-<tr><td>Assurer la cybersécurité d'une solution d'infrastructure réseau, système, applicatif</td><td class="mut">À renseigner</td><td class="st todo">○ À venir</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>Outils et technologies</h2>
-      <div class="table-scroll">
-        <table>
-          <tbody>
-            <tr><th scope="row">Systèmes</th><td class="mut">Windows 10 / 11, Windows Server, Debian</td></tr>
-            <tr><th scope="row">Réseau</th><td class="mut">VLAN, DHCP, DNS, routage, Cisco Packet Tracer</td></tr>
-            <tr><th scope="row">Outils</th><td class="mut">Active Directory, GLPI, VirtualBox, PowerShell, Bash</td></tr>
-            <tr><th scope="row">Langues</th><td class="mut">Français, anglais technique</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-</section>
-<section class="panel" id="veille" aria-label="Veille">
-
-      <h1 class="page-title">Veille technologique</h1>
-      <p class="lead">Suivre l'actualité de mon métier pour garder mes connaissances à jour.</p>
+    <!-- ===================== VEILLE ===================== -->
+    <section class="panel" id="veille" aria-label="Veille">
+      <h1>Veille technologique</h1>
 
       <h2>Mon sujet</h2>
-      <p><strong>À choisir :</strong> par exemple « Les attaques par rançongiciel contre les PME » ou « La fin du support de Windows 10 et ses conséquences pour un parc de postes ».</p>
-      <p>Explique en deux ou trois phrases pourquoi ce sujet compte pour ton alternance et ta formation.</p>
+      <p>[Écris ton sujet ici. Exemples : « Les attaques par rançongiciel contre les services publics », ou « La fin du support de Windows 10 et ses conséquences pour un parc de postes ».]</p>
+      <p>[Explique en deux ou trois phrases pourquoi ce sujet compte pour ton travail et ta formation.]</p>
 
       <h2>Mes sources</h2>
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th scope="col">Source</th><th scope="col">Type</th><th scope="col">Pourquoi</th></tr></thead>
-          <tbody>
-            <tr><td><a href="https://www.cert.ssi.gouv.fr">CERT-FR</a></td><td class="mut">Alertes officielles</td><td class="mut">Vulnérabilités et menaces en cours</td></tr>
-            <tr><td><a href="https://cyber.gouv.fr">ANSSI</a></td><td class="mut">Guides et actualités</td><td class="mut">Bonnes pratiques de sécurité</td></tr>
-            <tr><td><a href="https://www.cnil.fr">CNIL</a></td><td class="mut">Réglementation</td><td class="mut">Protection des données personnelles</td></tr>
-            <tr><td><a href="https://www.lemagit.fr">LeMagIT</a></td><td class="mut">Presse spécialisée</td><td class="mut">Actualité des infrastructures et de la sécurité</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>Ma méthode</h2>
-      <ol class="plain">
-        <li><strong>Collecter :</strong> un agrégateur de flux RSS et des alertes par e-mail.</li>
-        <li><strong>Trier :</strong> garder ce qui concerne mon sujet et écarter le reste.</li>
-        <li><strong>Résumer :</strong> une courte fiche par article retenu.</li>
-        <li><strong>Partager :</strong> présenter les points clés à mon équipe ou à ma classe.</li>
-      </ol>
-
-      <h2>Journal de veille</h2>
-      <ol class="xp">
-        <li>
-          <strong>Titre de l'article ou de l'alerte</strong>
-          <span class="when">Date · Source</span>
-          <p>Résumé en deux ou trois phrases, et ce que ça change pour toi ou pour ton entreprise.</p>
-        </li>
-        <li>
-          <strong>Titre du deuxième article</strong>
-          <span class="when">Date · Source</span>
-          <p>Résumé et impact.</p>
-        </li>
-      </ol>
-
-</section>
-<section class="panel" id="contact" aria-label="Contact">
-
-      <h1 class="page-title">Contact</h1>
-      <p class="lead">À la recherche d'un stage, d'une mission ou d'un échange sur le métier ? Écris-moi.</p>
-
-      <div class="mail-row">
-        <a class="mail" href="mailto:tristan.fahrasmane@cfautec.fr">tristan.fahrasmane@cfautec.fr</a>
-        <button class="chip" type="button" id="copyMail">Copier l'adresse</button>
-      </div>
-      <p class="copy-status" id="copyStatus" role="status"></p>
-
-      <h2>Écrire un message</h2>
-      <form class="form" id="mailForm">
-        <label>Ton nom<input class="field" id="fName" type="text" autocomplete="name" required></label>
-        <label>Objet<input class="field" id="fSubject" type="text" value="Contact depuis ton portfolio" required></label>
-        <label>Message<textarea class="field" id="fMsg" required></textarea></label>
-        <button class="btn primary" type="submit">Ouvrir dans ma messagerie</button>
-        <p class="note">Ce bouton ouvre ton application de messagerie avec le message déjà rempli.</p>
-      </form>
-
-      <h2>Liens</h2>
-      <ul class="rows">
-        <li><a href="cv.pdf"><strong>CV</strong><span>Télécharger mon CV en PDF.</span></a></li>
-        <li><a href="https://www.linkedin.com/in/ton-profil"><strong>LinkedIn</strong><span>Mon profil professionnel.</span></a></li>
-        <li><a href="https://github.com/ton-pseudo"><strong>GitHub</strong><span>Mes scripts et mes projets.</span></a></li>
+      <ul>
+        <li><a href="https://www.cert.ssi.gouv.fr">CERT-FR</a> : alertes sur les vulnérabilités et les menaces en cours.</li>
+        <li><a href="https://cyber.gouv.fr">ANSSI</a> : guides et bonnes pratiques de sécurité.</li>
+        <li><a href="https://www.cnil.fr">CNIL</a> : protection des données personnelles.</li>
+        <li><a href="https://www.lemagit.fr">LeMagIT</a> : actualité des infrastructures et de la sécurité.</li>
       </ul>
 
-</section>
+      <h2>Ma méthode</h2>
+      <p>[Décris où tu lis (agrégateur RSS, alertes mail), à quelle fréquence, et comment tu gardes et résumes les articles.]</p>
 
-    </div>
+      <h2>Journal de veille</h2>
+      <h3>[Titre de l'article]</h3>
+      <p class="small">[date, source]</p>
+      <p>[Résumé en deux ou trois phrases, et ce que ça change pour toi ou pour ton service.]</p>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="panel" id="contact" aria-label="Contact">
+      <h1>Contact</h1>
+      <p class="lead">Pour un stage, une mission ou une question sur mon parcours, écris-moi.</p>
+
+      <p><a class="mail" href="mailto:tristan.fahrasmane@cfautec.fr">tristan.fahrasmane@cfautec.fr</a></p>
+      <p><button class="btn" type="button" id="copyMail">Copier l'adresse</button></p>
+      <p class="copy-status" id="copyStatus" role="status"></p>
+
+      <h2>Ailleurs</h2>
+      <ul>
+        <li><a href="cv.pdf">Mon CV (PDF)</a></li>
+        <li><a href="https://www.linkedin.com/in/ton-profil">LinkedIn</a></li>
+        <li><a href="https://github.com/ton-pseudo">GitHub</a></li>
+      </ul>
+    </section>
+
   </main>
 
-  <footer>
-    <div class="wrap">© <span id="year">2026</span> Tristan Fahrasmane · BTS SIO option SISR</div>
-  </footer>
+  <footer>© <span id="year">2026</span> Tristan Fahrasmane</footer>
 
-  <a class="fab hidden" id="fab" href="#contact">Me contacter</a>
+  <a class="fab" id="fab" href="#contact">Me contacter</a>
 
   <script>
     (function () {
-      var ids = ['index','parcours','realisations','competences','veille','contact'];
+      var EMAIL = 'tristan.fahrasmane@cfautec.fr';
+      var ids = ['index', 'parcours', 'realisations', 'competences', 'veille', 'contact'];
+      var titles = { index: '', parcours: 'Parcours', realisations: 'Réalisations', competences: 'Compétences', veille: 'Veille', contact: 'Contact' };
       var panels = document.querySelectorAll('.panel');
-      var tabs = document.querySelectorAll('.tabs a');
+      var tabs = document.querySelectorAll('.tabs a[data-tab]');
+      var fab = document.getElementById('fab');
+      var menuBtn = document.getElementById('menuBtn');
+      var tabList = document.getElementById('mainTabs');
+
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      function show() {
-        var id = location.hash.replace('#', '');
+      /* Menu mobile */
+      function setMenu(open) {
+        tabList.classList.toggle('open', open);
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.textContent = open ? 'Fermer' : 'Menu';
+      }
+      menuBtn.addEventListener('click', function () { setMenu(!tabList.classList.contains('open')); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && tabList.classList.contains('open')) { setMenu(false); menuBtn.focus(); }
+      });
+
+      /* Onglets */
+      function show(id) {
+        if (typeof id !== 'string') id = location.hash.replace('#', '');
         if (ids.indexOf(id) === -1) id = 'index';
         panels.forEach(function (p) { p.classList.toggle('active', p.id === id); });
         tabs.forEach(function (a) {
           if (a.dataset.tab === id) a.setAttribute('aria-current', 'page');
           else a.removeAttribute('aria-current');
         });
-        var titles = {index:'Accueil',parcours:'Parcours',realisations:'Réalisations',competences:'Compétences',veille:'Veille',contact:'Contact'};
-        document.title = (id === 'index' ? '' : titles[id] + ' – ') + 'Tristan Fahrasmane – Portfolio BTS SIO SISR';
+        fab.classList.toggle('hidden', id === 'contact');
+        document.title = (titles[id] ? titles[id] + ' | ' : '') + 'Tristan Fahrasmane, portfolio BTS SIO SISR';
+        setMenu(false);
         window.scrollTo(0, 0);
       }
-      window.addEventListener('hashchange', show);
+      /* Les clics sur les liens internes changent d'onglet directement, sans dépendre de l'URL
+         (certains aperçus isolent la page et bloquent la navigation par #). */
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+        if (!a) return;
+        var id = a.getAttribute('href').slice(1);
+        if (ids.indexOf(id) === -1) return;
+        e.preventDefault();
+        try { history.pushState(null, '', '#' + id); } catch (err) { /* aperçu isolé : on ignore */ }
+        show(id);
+      });
+      window.addEventListener('hashchange', function () { show(); });
+      window.addEventListener('popstate', function () { show(); });
       show();
-    })();
-  </script>
 
-  <script>
-    (function () {
-      var EMAIL = 'tristan.fahrasmane@cfautec.fr';
-      var root = document.documentElement;
-
-      /* ----- Thème clair / sombre ----- */
-      var themeBtn = document.getElementById('themeBtn');
-      function isDark() {
-        var t = root.getAttribute('data-theme');
-        if (t) return t === 'dark';
-        return window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
-      }
-      function paintTheme() {
-        var d = isDark();
-        themeBtn.textContent = d ? 'Mode clair' : 'Mode sombre';
-        themeBtn.setAttribute('aria-pressed', d ? 'true' : 'false');
-      }
-      try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
-      themeBtn.addEventListener('click', function () {
-        var next = isDark() ? 'light' : 'dark';
-        root.setAttribute('data-theme', next);
-        try { localStorage.setItem('theme', next); } catch (e) {}
-        paintTheme();
-      });
-      paintTheme();
-
-      /* ----- Terminal ----- */
-      var out = document.getElementById('termOut');
-      var input = document.getElementById('termInput');
-      var chipsBox = document.getElementById('termChips');
-      var history = [], hpos = 0;
-
-      function line(text, cls) {
-        var d = document.createElement('div');
-        if (cls) d.className = cls;
-        d.textContent = text;
-        out.appendChild(d);
-        out.scrollTop = out.scrollHeight;
-      }
-      function lines(arr) { arr.forEach(function (t) { line(t); }); }
-      function titles() {
-        return Array.prototype.map.call(document.querySelectorAll('details.proj summary h3'), function (n) { return n.textContent; });
-      }
-      function count(cls) { return document.querySelectorAll('.st.' + cls).length; }
-
-      var pages = { accueil: 'index', index: 'index', parcours: 'parcours', realisations: 'realisations',
-                    'réalisations': 'realisations', competences: 'competences', 'compétences': 'competences',
-                    veille: 'veille', contact: 'contact' };
-
-      var commands = {
-        help: function () {
-          lines(['Commandes disponibles :',
-            '  whoami        qui suis-je',
-            '  formation     mon cursus',
-            '  alternance    mon poste en entreprise',
-            '  projets       la liste de mes réalisations',
-            '  competences   l\'état d\'avancement du référentiel',
-            '  veille        ma veille technologique',
-            '  contact       comment me joindre',
-            '  ouvrir <page> aller à un onglet (ex : ouvrir veille)',
-            '  clear         vider le terminal']);
-        },
-        whoami: function () { line('Tristan Fahrasmane, étudiant en BTS SIO option SISR et alternant technicien relation utilisateur.'); },
-        formation: function () { lines(['BTS SIO, option SISR (Solutions d\'infrastructure, systèmes et réseaux).', 'Première année, promotion 2026 – 2028.']); },
-        alternance: function () {
-          lines(['Technicien relation utilisateur.',
-            '- assistance aux utilisateurs (tickets, téléphone, e-mail)',
-            '- préparation et déploiement de postes',
-            '- gestion des comptes et des droits']);
-        },
-        projets: function () { lines(['Mes réalisations :'].concat(titles().map(function (t) { return '- ' + t; }))); },
-        competences: function () {
-          var a = count('ok'), w = count('wip'), t = count('todo');
-          line(a + ' acquises, ' + w + ' en cours, ' + t + ' à venir (sur ' + (a + w + t) + ').');
-        },
-        veille: function () { lines(['Sources suivies : CERT-FR, ANSSI, CNIL, LeMagIT.', 'Détails dans l\'onglet Veille (tape : ouvrir veille).']); },
-        contact: function () { lines(['E-mail : ' + EMAIL, 'Formulaire dans l\'onglet Contact (tape : ouvrir contact).']); },
-        clear: function () { out.textContent = ''; },
-        sudo: function () { line('Permission refusée : cette machine est gérée par un technicien.', 'err'); }
-      };
-
-      function run(raw) {
-        var cmd = raw.trim();
-        if (!cmd) return;
-        line('$ ' + cmd, 'cmd');
-        var parts = cmd.toLowerCase().split(/\s+/);
-        var name = parts[0];
-        if (name === 'ouvrir' || name === 'cd') {
-          var target = pages[parts[1]];
-          if (target) { line('Ouverture de « ' + parts[1] + ' »…'); location.hash = '#' + target; }
-          else line('Onglet inconnu. Essaie : accueil, parcours, realisations, competences, veille, contact.', 'err');
-          return;
-        }
-        if (commands.hasOwnProperty(name)) commands[name]();
-        else line('Commande inconnue : ' + name + '. Tape help pour la liste.', 'err');
-      }
-
-      ['help', 'whoami', 'projets', 'competences', 'contact'].forEach(function (c) {
-        var b = document.createElement('button');
-        b.type = 'button'; b.className = 'chip'; b.textContent = c;
-        b.addEventListener('click', function () { run(c); });
-        chipsBox.appendChild(b);
-      });
-      input.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-          var v = input.value;
-          if (v.trim()) { history.push(v); hpos = history.length; }
-          run(v); input.value = '';
-        } else if (e.key === 'ArrowUp') {
-          if (hpos > 0) { hpos--; input.value = history[hpos]; } e.preventDefault();
-        } else if (e.key === 'ArrowDown') {
-          if (hpos < history.length - 1) { hpos++; input.value = history[hpos]; } else { hpos = history.length; input.value = ''; }
-          e.preventDefault();
-        }
-      });
-      line('Bienvenue. Tape help pour voir les commandes.');
-
-      /* ----- Réalisations : filtres, recherche, tout ouvrir ----- */
-      var groupBtns = document.querySelectorAll('#projControls [data-group]');
-      var search = document.getElementById('projSearch');
-      var groups = document.querySelectorAll('.group');
-      var projs = document.querySelectorAll('details.proj');
-      var toggleAll = document.getElementById('toggleAll');
-      var activeGroup = 'all';
-
-      function filterProjects() {
-        var q = search.value.trim().toLowerCase();
-        var visible = 0;
-        groups.forEach(function (g) {
-          var shown = 0;
-          var okGroup = activeGroup === 'all' || g.getAttribute('data-group') === activeGroup;
-          g.querySelectorAll('details.proj').forEach(function (d) {
-            var match = okGroup && (!q || d.textContent.toLowerCase().indexOf(q) !== -1);
-            d.classList.toggle('hidden', !match);
-            if (match) shown++;
-          });
-          g.classList.toggle('hidden', shown === 0);
-          visible += shown;
-        });
-        document.getElementById('projEmpty').classList.toggle('hidden', visible !== 0);
-      }
-      groupBtns.forEach(function (b) {
-        b.addEventListener('click', function () {
-          activeGroup = b.getAttribute('data-group');
-          groupBtns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-          filterProjects();
-        });
-      });
-      search.addEventListener('input', filterProjects);
-      toggleAll.addEventListener('click', function () {
-        var open = toggleAll.textContent === 'Tout ouvrir';
-        projs.forEach(function (d) { if (!d.classList.contains('hidden')) d.open = open; });
-        toggleAll.textContent = open ? 'Tout fermer' : 'Tout ouvrir';
+      /* Lien d'évitement */
+      document.getElementById('skipLink').addEventListener('click', function (e) {
+        e.preventDefault();
+        document.getElementById('main').focus();
       });
 
-      /* ----- Compétences : synthèse et filtre ----- */
-      var a = count('ok'), w = count('wip'), t = count('todo'), total = a + w + t;
-      if (total) {
-        document.getElementById('barOk').style.width = (a / total * 100) + '%';
-        document.getElementById('barWip').style.width = (w / total * 100) + '%';
-        document.getElementById('skillLegend').textContent =
-          a + ' acquise' + (a > 1 ? 's' : '') + ' · ' + w + ' en cours · ' + t + ' à venir, sur ' + total + ' compétences.';
-      }
-      var statusBtns = document.querySelectorAll('#skillControls [data-status]');
-      statusBtns.forEach(function (b) {
-        b.addEventListener('click', function () {
-          var s = b.getAttribute('data-status');
-          statusBtns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-          document.querySelectorAll('#competences tbody tr').forEach(function (tr) {
-            var st = tr.querySelector('.st');
-            if (!st) return;
-            tr.classList.toggle('hidden', s !== 'all' && !st.classList.contains(s));
-          });
-        });
-      });
+      /* Compétences : phrase de synthèse */
+      var a = document.querySelectorAll('td.st.ok').length;
+      var w = document.querySelectorAll('td.st.wip').length;
+      var t = document.querySelectorAll('td.st.todo').length;
+      document.getElementById('skillSummary').textContent =
+        'Sur ' + (a + w + t) + ' compétences : ' + a + ' acquise' + (a > 1 ? 's' : '') + ', ' + w + ' en cours, ' + t + ' à voir.';
 
-      /* ----- Contact : copier l'e-mail et formulaire ----- */
-      var copyBtn = document.getElementById('copyMail');
+      /* Contact : copier l'adresse */
       var status = document.getElementById('copyStatus');
-      copyBtn.addEventListener('click', function () {
+      document.getElementById('copyMail').addEventListener('click', function () {
         function done(ok) {
-          status.textContent = ok ? 'Adresse copiée.' : 'Copie impossible, sélectionne l\'adresse à la main.';
+          status.textContent = ok ? 'Adresse copiée.' : "La copie n'a pas marché, sélectionne l'adresse à la main.";
           setTimeout(function () { status.textContent = ''; }, 2500);
         }
+        function fallback() {
+          var ta = document.createElement('textarea');
+          ta.value = EMAIL; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select();
+          var ok = false;
+          try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+          document.body.removeChild(ta);
+          done(ok);
+        }
         if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(EMAIL).then(function () { done(true); }, function () { done(false); });
-        } else { done(false); }
+          navigator.clipboard.writeText(EMAIL).then(function () { done(true); }, fallback);
+        } else { fallback(); }
       });
-      document.getElementById('mailForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        var name = document.getElementById('fName').value.trim();
-        var subject = document.getElementById('fSubject').value.trim();
-        var msg = document.getElementById('fMsg').value.trim();
-        var body = msg + '\n\n' + name;
-        location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      });
-    })();
-  </script>
 
-  <script>
-    (function () {
-      var fab = document.getElementById('fab');
-      function toggleFab() { fab.classList.toggle('hidden', location.hash === '#contact'); }
-      window.addEventListener('hashchange', toggleFab);
-      toggleFab();
+      /* Impression : ouvrir tous les projets */
+      var opened = [];
+      window.addEventListener('beforeprint', function () {
+        opened = [];
+        document.querySelectorAll('details').forEach(function (d) { if (!d.open) { opened.push(d); d.open = true; } });
+      });
+      window.addEventListener('afterprint', function () { opened.forEach(function (d) { d.open = false; }); });
     })();
   </script>
 </body>
