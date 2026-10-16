@@ -4,174 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#0c0d0f">
+  <meta name="theme-color" content="#0b0f19">
   <title>Tristan Fahrasmane, portfolio BTS SIO SISR</title>
   <meta name="description" content="Portfolio de Tristan Fahrasmane, étudiant en BTS SIO option SISR et alternant technicien relation utilisateur au SDIS 77.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Tristan Fahrasmane, portfolio BTS SIO SISR">
   <meta property="og:description" content="Projets, compétences et veille technologique d'un étudiant en BTS SIO option SISR en alternance au SDIS 77.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230c0d0f'/%3E%3Ctext x='32' y='43' font-size='30' font-family='Arial' font-weight='600' text-anchor='middle' fill='%238db0ff'%3ETF%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0f19'/%3E%3Ctext x='32' y='43' font-size='30' font-family='Arial' font-weight='600' text-anchor='middle' fill='%2338bdf8'%3ETF%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <script>document.documentElement.classList.add('js');</script>
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #0c0d0f;
-      --panel: #14161a;
-      --text: #e9eaec;
-      --muted: #9097a0;
-      --line: #25282d;
-      --accent: #8db0ff;
-      --ok: #6fd3a0;
-      --wip: #e8b95b;
-      --font: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font);
-      font-size: 1rem;
-      line-height: 1.55;
-      padding-bottom: 5rem;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: var(--accent); text-underline-offset: 0.2em; }
-    a:focus-visible, button:focus-visible, summary:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-      border-radius: 2px;
-    }
-    .hidden { display: none !important; }
-    .muted { color: var(--muted); }
-
-    .skip { position: absolute; left: -9999px; top: 0; z-index: 40; background: var(--accent); color: var(--bg); padding: 0.75rem 1rem; font-weight: 500; }
-    .skip:focus { left: 1rem; top: 1rem; }
-
-    /* En-tête */
-    .site-head {
-      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
-      gap: 0 1.5rem; padding: 0.5rem 1.5rem; border-bottom: 1px solid var(--line);
-    }
-    .brand { display: inline-flex; align-items: center; min-height: 44px; color: var(--text); font-weight: 600; text-decoration: none; }
-    .tabs { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
-    .tabs a {
-      display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.75rem;
-      color: var(--muted); font-size: 0.875rem; font-weight: 500; text-decoration: none;
-      border-bottom: 1px solid transparent;
-    }
-    .tabs a:hover { color: var(--text); }
-    .tabs a[aria-current="page"] { color: var(--text); border-bottom-color: var(--accent); }
-    .menu-btn { display: none; }
-
-    main { max-width: 48rem; margin: 0 auto; padding: 3rem 1.5rem 2rem; }
-    main:focus { outline: none; }
-
-    h1 { font-size: 2.074rem; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 0.5rem; }
-    .home h1 { font-size: 2.488rem; }
-    h2 { font-size: 1.44rem; line-height: 1.25; font-weight: 600; margin: 3rem 0 1rem; }
-    h3 { font-size: 1rem; line-height: 1.25; font-weight: 600; margin: 1.5rem 0 0.5rem; }
-    .panel > :first-child { margin-top: 0; }
-    p { margin: 0 0 1rem; max-width: 40rem; }
-    ul, ol { max-width: 40rem; padding-left: 1.25rem; margin: 0 0 1rem; }
-    li { margin-bottom: 0.25rem; }
-    .lead { color: var(--muted); font-size: 1.2rem; line-height: 1.4; }
-    .small { font-size: 0.875rem; color: var(--muted); }
-
-    /* Accueil */
-    .links { display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin: 2rem 0 3rem; }
-    .links a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 500; }
-    .facts { display: grid; grid-template-columns: 8rem 1fr; border-top: 1px solid var(--line); margin: 0; }
-    .facts dt, .facts dd { padding: 0.75rem 0; border-bottom: 1px solid var(--line); margin: 0; }
-    .facts dt { color: var(--muted); font-size: 0.875rem; }
-
-    /* Réalisations */
-    details.proj { border-top: 1px solid var(--line); }
-    details.proj:last-of-type { border-bottom: 1px solid var(--line); }
-    details.proj summary {
-      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-      min-height: 56px; padding: 0.5rem 0; cursor: pointer; list-style: none; font-weight: 500;
-    }
-    details.proj summary::-webkit-details-marker { display: none; }
-    details.proj summary::after { content: "+"; color: var(--muted); font-size: 1.25rem; line-height: 1; }
-    details.proj[open] summary::after { content: "\2013"; }
-    details.proj summary .date { color: var(--muted); font-weight: 400; font-size: 0.875rem; margin-left: auto; }
-    details.proj summary:hover { color: var(--accent); }
-    .proj-body { padding: 0.25rem 0 1.5rem; }
-    .proj-body dl { margin: 0; }
-    .proj-body dt { font-size: 0.875rem; color: var(--muted); margin-top: 1rem; }
-    .proj-body dd { margin: 0.25rem 0 0; max-width: 38rem; }
-    .proj-body ul { margin: 0; }
-    .tools-line { color: var(--muted); font-size: 0.875rem; margin: 0; }
-
-    /* Tableaux */
-    .scroll { overflow-x: auto; margin: 0 0 1rem; }
-    table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: 0.875rem; }
-    th, td { text-align: left; vertical-align: top; padding: 0.75rem 1rem 0.75rem 0; border-bottom: 1px solid var(--line); }
-    thead th { color: var(--muted); font-weight: 500; }
-    td.where { color: var(--muted); }
-    td.st { white-space: nowrap; }
-    td.st.ok { color: var(--ok); }
-    td.st.wip { color: var(--wip); }
-    td.st.todo { color: var(--muted); }
-    .bloc { font-size: 1rem; font-weight: 600; margin: 2rem 0 0.5rem; }
-
-    /* Contact */
-    .mail { display: inline-block; font-size: 1.2rem; font-weight: 600; overflow-wrap: anywhere; margin-bottom: 0.5rem; }
-    .btn {
-      font: inherit; font-size: 0.875rem; font-weight: 500; color: var(--text); background: transparent;
-      border: 1px solid var(--line); border-radius: 6px; min-height: 44px; padding: 0 1rem; cursor: pointer;
-    }
-    .btn:hover { border-color: var(--muted); }
-    .copy-status { color: var(--ok); font-size: 0.875rem; min-height: 1.5rem; margin: 0.5rem 0 0; }
-
-    footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.875rem; padding: 1.5rem; }
-
-    /* Bouton fixe */
-    .fab {
-      position: fixed; right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); z-index: 20;
-      display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.25rem;
-      background: var(--accent); color: var(--bg); font-weight: 600; text-decoration: none; border-radius: 6px;
-    }
-    .fab:hover { opacity: 0.9; }
-    .fab:focus-visible { outline-color: var(--text); }
-
-    .js .panel { display: none; }
-    .js .panel.active { display: block; }
-
-    @media (max-width: 767px) {
-      .site-head { padding: 0.25rem 1rem; }
-      main { padding: 2rem 1rem 1.5rem; }
-      .js .menu-btn { display: inline-flex; align-items: center; }
-      .js .site-head nav { width: 100%; }
-      .js .tabs { display: none; flex-direction: column; gap: 0; padding-bottom: 0.5rem; }
-      .js .tabs.open { display: flex; }
-      .js .tabs a { border-bottom: 1px solid var(--line); padding: 0 0.25rem; font-size: 1rem; }
-      .facts { grid-template-columns: 1fr; }
-      .facts dt { border-bottom: 0; padding-bottom: 0; }
-      .facts dd { padding-top: 0.25rem; }
-    }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-
-    @media print {
-      :root { --bg: #fff; --panel: #fff; --text: #000; --muted: #444; --line: #bbb; --accent: #000; --ok: #000; --wip: #000; }
-      .skip, .site-head, .fab, .btn, .menu-btn { display: none !important; }
-      body { padding-bottom: 0; }
-      .js .panel { display: block !important; margin-bottom: 2rem; }
-      h1, h2 { break-after: avoid; }
-    }
-  </style>
 </head>
 <body>
   <a class="skip" href="#main" id="skipLink">Aller au contenu</a>
 
   <header class="site-head">
-    <a class="brand" href="#index">Tristan Fahrasmane</a>
-    <button class="btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainTabs">Menu</button>
+    <a class="brand" href="#index"><span class="brand-mark" aria-hidden="true">TF</span>Tristan Fahrasmane</a>
+    <button class="btn btn-ghost menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainTabs">Menu</button>
     <nav aria-label="Sections du portfolio">
       <ul class="tabs" id="mainTabs">
         <li><a href="#index" data-tab="index">Accueil</a></li>
@@ -188,43 +39,62 @@
 
     <!-- ===================== ACCUEIL ===================== -->
     <section class="panel home" id="index" aria-label="Accueil">
-      <h1>Tristan Fahrasmane</h1>
-      <p class="lead">Étudiant en BTS SIO option SISR, alternant technicien relation utilisateur au SDIS 77.</p>
-      <p>Je me forme à l'administration des systèmes et des réseaux. Au quotidien, je réponds aux utilisateurs, je prépare leurs postes et je gère leurs accès. Ce site rassemble mes projets, mes compétences et ma veille technologique.</p>
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="badge-live"><span class="dot" aria-hidden="true"></span>En alternance @ SDIS 77</p>
+          <h1>Tristan Fahrasmane</h1>
+          <p class="hero-role">Étudiant en BTS SIO option SISR, alternant technicien relation utilisateur.</p>
+          <p class="hero-text">Je me forme à l'administration des systèmes et des réseaux. Au quotidien, je réponds aux utilisateurs, je prépare leurs postes et je gère leurs accès. Ce site rassemble mes projets, mes compétences et ma veille technologique.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#realisations">Mes réalisations</a>
+            <a class="btn btn-ghost" href="cv.pdf" download>Mon CV</a>
+          </div>
+        </div>
 
-      <div class="links">
-        <a href="#realisations">Mes réalisations</a>
-        <a href="cv.pdf" download>Mon CV</a>
+        <aside class="hero-card" aria-labelledby="facts-title">
+          <h2 id="facts-title">Infos clés</h2>
+          <dl class="facts">
+            <div><dt>Formation</dt><dd>BTS SIO option SISR, 1re année</dd></div>
+            <div><dt>Alternance</dt><dd>Technicien relation utilisateur, SDIS 77</dd></div>
+            <div><dt>E-mail</dt><dd><a href="mailto:tristan.fahrasmane@cfautec.fr">tristan.fahrasmane@cfautec.fr</a></dd></div>
+          </dl>
+        </aside>
       </div>
-
-      <dl class="facts">
-        <dt>Formation</dt><dd>BTS SIO option SISR, 1re année</dd>
-        <dt>Alternance</dt><dd>Technicien relation utilisateur, SDIS 77</dd>
-        <dt>E-mail</dt><dd><a href="mailto:tristan.fahrasmane@cfautec.fr">tristan.fahrasmane@cfautec.fr</a></dd>
-      </dl>
     </section>
 
     <!-- ===================== PARCOURS ===================== -->
     <section class="panel" id="parcours" aria-label="Parcours">
       <h1>Parcours</h1>
-
-      <h2>Alternance</h2>
-      <p><strong>Technicien relation utilisateur</strong>, SDIS 77 (Service départemental d'incendie et de secours de Seine-et-Marne), depuis [mois] 2026.</p>
+      <p class="lead">Mon alternance et ma formation, de la plus récente à la plus ancienne.</p>
       <!-- Important : ne publie aucune information sensible sur le SDIS 77 (architecture réseau, adresses IP, noms de serveurs, procédures de sécurité, données opérationnelles). Reste sur des descriptions générales. -->
-      <p>Je suis le premier contact des utilisateurs quand ils ont un problème ou une demande informatique. Mes missions :</p>
-      <ul>
-        <li>répondre aux utilisateurs par téléphone, par mail et dans l'outil de tickets ;</li>
-        <li>résoudre les incidents courants et passer la main au niveau 2 quand c'est nécessaire ;</li>
-        <li>préparer et installer les postes de travail ;</li>
-        <li>créer et modifier des comptes et des droits ;</li>
-        <li>mettre à jour l'inventaire du matériel et la documentation.</li>
-      </ul>
-      <p class="small">Outils au quotidien : Windows, Active Directory, GLPI, prise en main à distance. [Adapte cette liste à ce que tu utilises vraiment.]</p>
 
-      <h2>Formation</h2>
-      <p><strong>BTS SIO option SISR</strong>, [nom de l'établissement], 2026 à 2028.</p>
-      <p>SISR veut dire « Solutions d'infrastructure, systèmes et réseaux ». L'option forme à installer, administrer et sécuriser des serveurs et des réseaux, et à assurer le support des utilisateurs.</p>
-      <p><strong>Avant :</strong> [baccalauréat ou diplôme précédent, année].</p>
+      <ol class="timeline">
+        <li class="tl-item tl-current">
+          <span class="tl-date">[mois] 2026 – aujourd'hui</span>
+          <h3>Technicien relation utilisateur</h3>
+          <p class="tl-org">SDIS 77, Service départemental d'incendie et de secours de Seine-et-Marne</p>
+          <p>Je suis le premier contact des utilisateurs quand ils ont un problème ou une demande informatique. Mes missions :</p>
+          <ul>
+            <li>répondre aux utilisateurs par téléphone, par mail et dans l'outil de tickets ;</li>
+            <li>résoudre les incidents courants et passer la main au niveau 2 quand c'est nécessaire ;</li>
+            <li>préparer et installer les postes de travail ;</li>
+            <li>créer et modifier des comptes et des droits ;</li>
+            <li>mettre à jour l'inventaire du matériel et la documentation.</li>
+          </ul>
+          <ul class="tags"><li>Windows</li><li>Active Directory</li><li>GLPI</li><li>Prise en main à distance</li></ul>
+        </li>
+        <li class="tl-item">
+          <span class="tl-date">2026 – 2028</span>
+          <h3>BTS SIO option SISR</h3>
+          <p class="tl-org">[nom de l'établissement]</p>
+          <p>SISR veut dire « Solutions d'infrastructure, systèmes et réseaux ». L'option forme à installer, administrer et sécuriser des serveurs et des réseaux, et à assurer le support des utilisateurs.</p>
+        </li>
+        <li class="tl-item">
+          <span class="tl-date">[année]</span>
+          <h3>[Baccalauréat ou diplôme précédent]</h3>
+          <p class="tl-org">[établissement]</p>
+        </li>
+      </ol>
     </section>
 
     <!-- ===================== REALISATIONS ===================== -->
@@ -238,7 +108,7 @@
       <details class="proj">
         <summary>Traiter les tickets d'assistance<span class="date">2026</span></summary>
         <div class="proj-body">
-          <p class="tools-line">GLPI, prise en main à distance, Active Directory</p>
+          <ul class="tags"><li>GLPI</li><li>prise en main à distance</li><li>Active Directory</li></ul>
           <dl>
             <dt>Contexte</dt>
             <dd>Quand un utilisateur a un problème informatique, il ouvre un ticket ou appelle le support.</dd>
@@ -258,7 +128,7 @@
       <details class="proj">
         <summary>Préparer des postes de travail<span class="date">2026</span></summary>
         <div class="proj-body">
-          <p class="tools-line">Windows, Active Directory, GLPI</p>
+          <ul class="tags"><li>Windows</li><li>Active Directory</li><li>GLPI</li></ul>
           <dl>
             <dt>Contexte</dt>
             <dd>Arrivée de nouveaux agents et remplacement de postes anciens.</dd>
@@ -278,7 +148,7 @@
       <details class="proj">
         <summary>Gérer des comptes et des droits<span class="date">2026</span></summary>
         <div class="proj-body">
-          <p class="tools-line">Active Directory</p>
+          <ul class="tags"><li>Active Directory</li></ul>
           <dl>
             <dt>Contexte</dt>
             <dd>Chaque arrivée, départ ou changement de service demande de modifier des accès.</dd>
@@ -299,7 +169,7 @@
       <details class="proj">
         <summary>Monter un domaine Active Directory<span class="date">2026</span></summary>
         <div class="proj-body">
-          <p class="tools-line">Windows Server 2022, AD DS, DNS, DHCP, GPO, VirtualBox</p>
+          <ul class="tags"><li>Windows Server 2022</li><li>AD DS</li><li>DNS</li><li>DHCP</li><li>GPO</li><li>VirtualBox</li></ul>
           <dl>
             <dt>Contexte</dt>
             <dd>TP en maquette virtuelle : simuler le réseau d'une petite entreprise.</dd>
@@ -317,13 +187,18 @@
             <dd>Le poste client ouvre une session sur le domaine et reçoit ses paramètres tout seul.</dd>
           </dl>
           <!-- Quand le PDF est dans le dépôt, décommente : <p><a href="docs/active-directory.pdf">Documentation (PDF)</a></p> -->
+          <figure class="shot">
+            <!-- Pour ajouter une capture : remplace le <div class="shot-ph"> par <img src="images/ma-capture.png" alt="Description de la capture" loading="lazy"> -->
+            <div class="shot-ph">Capture d'écran à ajouter</div>
+            <figcaption>Exemple : console « Utilisateurs et ordinateurs Active Directory »</figcaption>
+          </figure>
         </div>
       </details>
 
       <details class="proj">
         <summary>Installer GLPI sur un serveur Debian<span class="date">2026</span></summary>
         <div class="proj-body">
-          <p class="tools-line">Debian 12, Apache, PHP, MariaDB, GLPI</p>
+          <ul class="tags"><li>Debian 12</li><li>Apache</li><li>PHP</li><li>MariaDB</li><li>GLPI</li></ul>
           <dl>
             <dt>Contexte</dt>
             <dd>TP : mettre en place un outil de gestion de parc et de tickets.</dd>
@@ -338,13 +213,18 @@
             <dd>Un serveur GLPI accessible depuis le réseau, avec inventaire et suivi de tickets.</dd>
           </dl>
           <!-- <p><a href="docs/glpi.pdf">Documentation (PDF)</a></p> -->
+          <figure class="shot">
+            <!-- Pour ajouter une capture : remplace le <div class="shot-ph"> par <img src="images/ma-capture.png" alt="Description de la capture" loading="lazy"> -->
+            <div class="shot-ph">Capture d'écran à ajouter</div>
+            <figcaption>Exemple : tableau de bord GLPI avec l'inventaire</figcaption>
+          </figure>
         </div>
       </details>
 
       <details class="proj">
         <summary>Séparer un réseau avec des VLAN<span class="date">2026</span></summary>
         <div class="proj-body">
-          <p class="tools-line">Cisco Packet Tracer, VLAN, trunk, routage inter-VLAN</p>
+          <ul class="tags"><li>Cisco Packet Tracer</li><li>VLAN</li><li>trunk</li><li>routage inter-VLAN</li></ul>
           <dl>
             <dt>Contexte</dt>
             <dd>Dans le réseau de départ, tous les services étaient mélangés.</dd>
@@ -358,6 +238,11 @@
             <dd>Les services communiquent seulement comme prévu.</dd>
           </dl>
           <!-- <p><a href="docs/vlan.pdf">Documentation (PDF)</a></p> -->
+          <figure class="shot">
+            <!-- Pour ajouter une capture : remplace le <div class="shot-ph"> par <img src="images/ma-capture.png" alt="Description de la capture" loading="lazy"> -->
+            <div class="shot-ph">Capture d'écran à ajouter</div>
+            <figcaption>Exemple : topologie Packet Tracer</figcaption>
+          </figure>
         </div>
       </details>
     </section>
@@ -369,48 +254,54 @@
       <p id="skillSummary"></p>
       <!-- À MODIFIER : ajuste les statuts (classes ok, wip, todo) au fil de l'année. -->
 
-      <h2 class="bloc">Bloc 1 : support et mise à disposition de services informatiques</h2>
-      <div class="scroll"><table>
+      <article class="bloc-card">
+        <h3 class="bloc-title"><span class="bloc-num">Bloc 1</span>Support et mise à disposition de services informatiques</h3>
+        <div class="scroll"><table>
         <thead><tr><th scope="col">Compétence</th><th scope="col">Où je l'ai travaillée</th><th scope="col">Statut</th></tr></thead>
         <tbody>
-          <tr><td>Gérer le patrimoine informatique</td><td class="where">Inventaire GLPI, préparation de postes</td><td class="st wip">En cours</td></tr>
-          <tr><td>Répondre aux incidents et aux demandes d'assistance et d'évolution</td><td class="where">Tickets en alternance</td><td class="st ok">Acquise</td></tr>
-          <tr><td>Développer la présence en ligne de l'organisation</td><td class="where">[à renseigner]</td><td class="st todo">À voir</td></tr>
-          <tr><td>Travailler en mode projet</td><td class="where">Projets de groupe en cours</td><td class="st wip">En cours</td></tr>
-          <tr><td>Mettre à disposition des utilisateurs un service informatique</td><td class="where">Domaine AD, GLPI</td><td class="st wip">En cours</td></tr>
-          <tr><td>Organiser son développement professionnel</td><td class="where">Portfolio, veille</td><td class="st wip">En cours</td></tr>
+          <tr><td>Gérer le patrimoine informatique</td><td class="where">Inventaire GLPI, préparation de postes</td><td class="st wip"><span class="badge">En cours</span></td></tr>
+          <tr><td>Répondre aux incidents et aux demandes d'assistance et d'évolution</td><td class="where">Tickets en alternance</td><td class="st ok"><span class="badge">Acquise</span></td></tr>
+          <tr><td>Développer la présence en ligne de l'organisation</td><td class="where">[à renseigner]</td><td class="st todo"><span class="badge">À voir</span></td></tr>
+          <tr><td>Travailler en mode projet</td><td class="where">Projets de groupe en cours</td><td class="st wip"><span class="badge">En cours</span></td></tr>
+          <tr><td>Mettre à disposition des utilisateurs un service informatique</td><td class="where">Domaine AD, GLPI</td><td class="st wip"><span class="badge">En cours</span></td></tr>
+          <tr><td>Organiser son développement professionnel</td><td class="where">Portfolio, veille</td><td class="st wip"><span class="badge">En cours</span></td></tr>
         </tbody>
       </table></div>
+      </article>
 
-      <h2 class="bloc">Bloc 2 : administration des systèmes et des réseaux (option SISR)</h2>
-      <div class="scroll"><table>
+      <article class="bloc-card">
+        <h3 class="bloc-title"><span class="bloc-num">Bloc 2</span>Administration des systèmes et des réseaux (option SISR)</h3>
+        <div class="scroll"><table>
         <thead><tr><th scope="col">Compétence</th><th scope="col">Où je l'ai travaillée</th><th scope="col">Statut</th></tr></thead>
         <tbody>
-          <tr><td>Concevoir une solution d'infrastructure réseau</td><td class="where">Schéma et plan d'adressage des VLAN</td><td class="st wip">En cours</td></tr>
-          <tr><td>Installer, tester et déployer une solution d'infrastructure réseau</td><td class="where">Domaine AD, GLPI, Packet Tracer</td><td class="st wip">En cours</td></tr>
-          <tr><td>Exploiter, dépanner et superviser une solution d'infrastructure réseau</td><td class="where">Dépannage en alternance</td><td class="st wip">En cours</td></tr>
+          <tr><td>Concevoir une solution d'infrastructure réseau</td><td class="where">Schéma et plan d'adressage des VLAN</td><td class="st wip"><span class="badge">En cours</span></td></tr>
+          <tr><td>Installer, tester et déployer une solution d'infrastructure réseau</td><td class="where">Domaine AD, GLPI, Packet Tracer</td><td class="st wip"><span class="badge">En cours</span></td></tr>
+          <tr><td>Exploiter, dépanner et superviser une solution d'infrastructure réseau</td><td class="where">Dépannage en alternance</td><td class="st wip"><span class="badge">En cours</span></td></tr>
         </tbody>
       </table></div>
+      </article>
 
-      <h2 class="bloc">Bloc 3 : cybersécurité des services informatiques</h2>
-      <div class="scroll"><table>
+      <article class="bloc-card">
+        <h3 class="bloc-title"><span class="bloc-num">Bloc 3</span>Cybersécurité des services informatiques</h3>
+        <div class="scroll"><table>
         <thead><tr><th scope="col">Compétence</th><th scope="col">Où je l'ai travaillée</th><th scope="col">Statut</th></tr></thead>
         <tbody>
-          <tr><td>Protéger les données à caractère personnel</td><td class="where">[à renseigner]</td><td class="st todo">À voir</td></tr>
-          <tr><td>Préserver l'identité numérique de l'organisation</td><td class="where">[à renseigner]</td><td class="st todo">À voir</td></tr>
-          <tr><td>Sécuriser les équipements et les usages des utilisateurs</td><td class="where">GPO, gestion des droits</td><td class="st wip">En cours</td></tr>
-          <tr><td>Garantir la disponibilité, l'intégrité et la confidentialité des services et des données face aux cyberattaques</td><td class="where">[à renseigner]</td><td class="st todo">À voir</td></tr>
-          <tr><td>Assurer la cybersécurité d'une solution d'infrastructure réseau, système, applicatif</td><td class="where">[à renseigner]</td><td class="st todo">À voir</td></tr>
+          <tr><td>Protéger les données à caractère personnel</td><td class="where">[à renseigner]</td><td class="st todo"><span class="badge">À voir</span></td></tr>
+          <tr><td>Préserver l'identité numérique de l'organisation</td><td class="where">[à renseigner]</td><td class="st todo"><span class="badge">À voir</span></td></tr>
+          <tr><td>Sécuriser les équipements et les usages des utilisateurs</td><td class="where">GPO, gestion des droits</td><td class="st wip"><span class="badge">En cours</span></td></tr>
+          <tr><td>Garantir la disponibilité, l'intégrité et la confidentialité des services et des données face aux cyberattaques</td><td class="where">[à renseigner]</td><td class="st todo"><span class="badge">À voir</span></td></tr>
+          <tr><td>Assurer la cybersécurité d'une solution d'infrastructure réseau, système, applicatif</td><td class="where">[à renseigner]</td><td class="st todo"><span class="badge">À voir</span></td></tr>
         </tbody>
       </table></div>
+      </article>
 
       <h2>Outils</h2>
-      <ul>
-        <li><strong>Systèmes :</strong> Windows 10 et 11, Windows Server, Debian</li>
-        <li><strong>Réseau :</strong> VLAN, DHCP, DNS, routage, Cisco Packet Tracer</li>
-        <li><strong>Autres :</strong> Active Directory, GLPI, VirtualBox, PowerShell, Bash</li>
-        <li><strong>Langues :</strong> français, anglais technique</li>
-      </ul>
+      <div class="tools-grid">
+        <div class="tool-group"><h3>Systèmes</h3><ul class="tags"><li>Windows 10 / 11</li><li>Windows Server</li><li>Debian</li></ul></div>
+        <div class="tool-group"><h3>Réseau</h3><ul class="tags"><li>VLAN</li><li>DHCP</li><li>DNS</li><li>Routage</li><li>Cisco Packet Tracer</li></ul></div>
+        <div class="tool-group"><h3>Administration</h3><ul class="tags"><li>Active Directory</li><li>GLPI</li><li>VirtualBox</li><li>PowerShell</li><li>Bash</li></ul></div>
+        <div class="tool-group"><h3>Langues</h3><ul class="tags"><li>Français</li><li>Anglais technique</li></ul></div>
+      </div>
     </section>
 
     <!-- ===================== VEILLE ===================== -->
@@ -422,20 +313,22 @@
       <p>[Explique en deux ou trois phrases pourquoi ce sujet compte pour ton travail et ta formation.]</p>
 
       <h2>Mes sources</h2>
-      <ul>
-        <li><a href="https://www.cert.ssi.gouv.fr">CERT-FR</a> : alertes sur les vulnérabilités et les menaces en cours.</li>
-        <li><a href="https://cyber.gouv.fr">ANSSI</a> : guides et bonnes pratiques de sécurité.</li>
-        <li><a href="https://www.cnil.fr">CNIL</a> : protection des données personnelles.</li>
-        <li><a href="https://www.lemagit.fr">LeMagIT</a> : actualité des infrastructures et de la sécurité.</li>
+      <ul class="source-grid">
+        <li><a class="source-card" href="https://www.cert.ssi.gouv.fr"><strong>CERT-FR</strong><span>Alertes sur les vulnérabilités et les menaces en cours.</span></a></li>
+        <li><a class="source-card" href="https://cyber.gouv.fr"><strong>ANSSI</strong><span>Guides et bonnes pratiques de sécurité.</span></a></li>
+        <li><a class="source-card" href="https://www.cnil.fr"><strong>CNIL</strong><span>Protection des données personnelles.</span></a></li>
+        <li><a class="source-card" href="https://www.lemagit.fr"><strong>LeMagIT</strong><span>Actualité des infrastructures et de la sécurité.</span></a></li>
       </ul>
 
       <h2>Ma méthode</h2>
       <p>[Décris où tu lis (agrégateur RSS, alertes mail), à quelle fréquence, et comment tu gardes et résumes les articles.]</p>
 
       <h2>Journal de veille</h2>
-      <h3>[Titre de l'article]</h3>
-      <p class="small">[date, source]</p>
-      <p>[Résumé en deux ou trois phrases, et ce que ça change pour toi ou pour ton service.]</p>
+      <article class="journal-entry">
+        <h3>[Titre de l'article]</h3>
+        <p class="small">[date, source]</p>
+        <p>[Résumé en deux ou trois phrases, et ce que ça change pour toi ou pour ton service.]</p>
+      </article>
     </section>
 
     <!-- ===================== CONTACT ===================== -->
@@ -443,15 +336,21 @@
       <h1>Contact</h1>
       <p class="lead">Pour un stage, une mission ou une question sur mon parcours, écris-moi.</p>
 
-      <p><a class="mail" href="mailto:tristan.fahrasmane@cfautec.fr">tristan.fahrasmane@cfautec.fr</a></p>
-      <p><button class="btn" type="button" id="copyMail">Copier l'adresse</button></p>
-      <p class="copy-status" id="copyStatus" role="status"></p>
+      <div class="contact-card">
+        <p class="small">E-mail</p>
+        <a class="mail" href="mailto:tristan.fahrasmane@cfautec.fr">tristan.fahrasmane@cfautec.fr</a>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="mailto:tristan.fahrasmane@cfautec.fr">Envoyer un e-mail</a>
+          <button class="btn btn-ghost" type="button" id="copyMail">Copier l'adresse</button>
+        </div>
+        <p class="copy-status" id="copyStatus" role="status"></p>
+      </div>
 
       <h2>Ailleurs</h2>
-      <ul>
-        <li><a href="cv.pdf">Mon CV (PDF)</a></li>
-        <li><a href="https://www.linkedin.com/in/ton-profil">LinkedIn</a></li>
-        <li><a href="https://github.com/ton-pseudo">GitHub</a></li>
+      <ul class="link-list">
+        <li><a class="btn btn-ghost" href="cv.pdf">Mon CV (PDF)</a></li>
+        <li><a class="btn btn-ghost" href="https://www.linkedin.com/in/ton-profil">LinkedIn</a></li>
+        <li><a class="btn btn-ghost" href="https://github.com/ton-pseudo">GitHub</a></li>
       </ul>
     </section>
 
@@ -459,7 +358,7 @@
 
   <footer>© <span id="year">2026</span> Tristan Fahrasmane</footer>
 
-  <a class="fab" id="fab" href="#contact">Me contacter</a>
+  <a class="btn btn-primary fab" id="fab" href="#contact">Me contacter</a>
 
   <script>
     (function () {
