@@ -1,0 +1,558 @@
+/* ==========================================================================
+   Portfolio de Tristan Fahrasmane : BTS SIO option SISR
+   Thème « Tech / Infrastructure » : sombre par défaut
+
+   SOMMAIRE
+   0.  Variables (couleurs, polices, rayons, ombres)
+   1.  Base : reset, typographie, focus, utilitaires
+   2.  En-tête sticky et navigation
+   3.  Mise en page générale et transitions entre onglets
+   4.  Boutons (CTA) et badges
+   5.  Accueil : hero, carte d'infos
+   6.  Parcours : frise chronologique
+   7.  Réalisations : cartes <details>, tags, captures d'écran
+   8.  Compétences : cartes par bloc, badges d'état, grille d'outils
+   9.  Veille : cartes de sources, journal
+   10. Contact
+   11. Pied de page et bouton flottant
+   12. Responsive
+   13. Accessibilité : animations réduites
+   14. Impression
+   ========================================================================== */
+
+
+/* ==========================================================================
+   0. VARIABLES
+   Pour changer l'accent du site, modifie seulement --accent (et --accent-rgb).
+   ========================================================================== */
+:root {
+  color-scheme: dark;
+
+  /* Fonds */
+  --bg:          #0b0f19;                    /* fond de page (nuit profonde) */
+  --bg-soft:     #0f172a;                    /* zones légèrement relevées */
+  --card:        rgba(30, 41, 59, 0.55);     /* cartes : #1e293b en transparence */
+  --card-solid:  #1e293b;
+  --card-hover:  rgba(30, 41, 59, 0.8);
+
+  /* Textes */
+  --text:        #f8fafc;
+  --muted:       #94a3b8;
+
+  /* Bordures */
+  --line:        rgba(148, 163, 184, 0.16);  /* bordure discrète */
+  --line-strong: rgba(148, 163, 184, 0.30);
+
+  /* Accent (cyan / bleu électrique) */
+  --accent:       #38bdf8;
+  --accent-rgb:   56, 189, 248;
+  --accent-hover: #7dd3fc;
+  --accent-deep:  #2563eb;                   /* variante bleu électrique */
+  --accent-soft:  rgba(var(--accent-rgb), 0.12);
+  --on-accent:    #04121f;                   /* texte sur fond accent */
+
+  /* États des compétences */
+  --ok:        #6ee7b7;  --ok-bg:   rgba(52, 211, 153, 0.12);  --ok-line:   rgba(52, 211, 153, 0.32);
+  --wip:       #fcd34d;  --wip-bg:  rgba(251, 191, 36, 0.12);  --wip-line:  rgba(251, 191, 36, 0.32);
+  --todo:      #cbd5e1;  --todo-bg: rgba(148, 163, 184, 0.12); --todo-line: rgba(148, 163, 184, 0.30);
+
+  /* Polices */
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* Formes et profondeur */
+  --radius:    14px;
+  --radius-sm: 10px;
+  --shadow:    0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 32px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.3);
+
+  /* Mouvement */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --fast: 150ms;
+  --base: 250ms;
+
+  /* Largeurs */
+  --page: 68rem;
+  --gutter: clamp(1rem, 4vw, 1.5rem);
+  --header-h: 4rem;
+}
+
+
+/* ==========================================================================
+   1. BASE
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: rgba(var(--accent-rgb), 0.3); }
+
+h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.02em; }
+h1 { font-size: clamp(2.25rem, 5vw, 3.25rem); line-height: 1.12; }
+h2 { font-size: 1.5rem; line-height: 1.25; margin: 3rem 0 1.25rem; }
+h3 { font-size: 1.125rem; line-height: 1.3; }
+
+p  { margin: 0 0 1rem; max-width: 42rem; }
+ul, ol { margin: 0 0 1rem; padding-left: 1.25rem; max-width: 42rem; }
+ul { list-style: disc; }
+li { margin-bottom: 0.35rem; }
+
+a { color: var(--accent); text-underline-offset: 0.2em; transition: color var(--fast) ease; }
+a:hover { color: var(--accent-hover); }
+
+code, kbd { font-family: var(--mono); font-size: 0.9em; }
+
+/* Anneau de focus clavier, visible partout */
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.hidden { display: none !important; }
+.muted  { color: var(--muted); }
+.small  { font-size: 0.875rem; color: var(--muted); }
+.lead   { font-size: 1.1875rem; line-height: 1.5; color: var(--muted); max-width: 40rem; margin: 0.75rem 0 1.5rem; }
+
+/* Lien d'évitement (accessibilité clavier) */
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--accent); color: var(--on-accent);
+  padding: 0.75rem 1rem; font-weight: 500; border-radius: 0 0 var(--radius-sm) 0;
+}
+.skip:focus { left: 0; }
+
+
+/* ==========================================================================
+   2. EN-TÊTE STICKY + NAVIGATION
+   ========================================================================== */
+.site-head {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 0 1.5rem;
+  min-height: var(--header-h);
+  /* aligne le contenu de l'en-tête sur la largeur de la page */
+  padding: 0 max(var(--gutter), calc((100% - var(--page)) / 2 + var(--gutter)));
+  background: rgba(11, 15, 25, 0.72);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Navigateurs sans flou : fond plus opaque pour garder la lisibilité */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-head { background: rgba(11, 15, 25, 0.96); }
+}
+
+.brand {
+  display: inline-flex; align-items: center; gap: 0.65rem;
+  min-height: 44px;
+  color: var(--text); font-weight: 600; text-decoration: none; letter-spacing: -0.01em;
+}
+.brand:hover { color: var(--text); }
+.brand-mark {
+  display: grid; place-items: center;
+  width: 2rem; height: 2rem;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(var(--accent-rgb), 0.35);
+  color: var(--accent);
+  font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
+}
+
+.tabs { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; max-width: none; }
+.tabs li { margin: 0; }
+.tabs a {
+  position: relative;
+  display: inline-flex; align-items: center;
+  min-height: 44px; padding: 0 0.9rem;
+  border-radius: var(--radius-sm);
+  color: var(--muted); font-size: 0.9375rem; font-weight: 500; text-decoration: none;
+  transition: color var(--fast) ease, background-color var(--fast) ease;
+}
+.tabs a:hover { color: var(--text); background: rgba(148, 163, 184, 0.08); }
+
+/* Onglet actif : texte accent, fond teinté et barre lumineuse sous le lien */
+.tabs a[aria-current="page"] { color: var(--accent); background: var(--accent-soft); }
+.tabs a[aria-current="page"]::after {
+  content: ""; position: absolute; left: 0.9rem; right: 0.9rem; bottom: 4px;
+  height: 2px; border-radius: 2px; background: var(--accent);
+}
+
+.btn.menu-btn { display: none; }   /* affiché seulement sur mobile (voir section 12) */
+
+
+/* ==========================================================================
+   3. MISE EN PAGE + TRANSITIONS ENTRE ONGLETS
+   ========================================================================== */
+main { max-width: var(--page); margin: 0 auto; padding: 3.5rem var(--gutter) 3rem; }
+main:focus { outline: none; }
+
+/* JavaScript actif : un seul onglet visible à la fois */
+.js .panel { display: none; }
+.js .panel.active { display: block; animation: panel-in 380ms var(--ease) both; }
+@keyframes panel-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.panel > :first-child { margin-top: 0; }
+
+/* Petit repère « terminal » au-dessus de chaque titre de page */
+.panel:not(.home) > h1::before {
+  display: block; margin-bottom: 0.6rem;
+  font-family: var(--mono); font-size: 0.8125rem; font-weight: 400; letter-spacing: 0;
+  color: var(--accent);
+}
+#parcours     > h1::before { content: "~/parcours"; }
+#realisations > h1::before { content: "~/realisations"; }
+#competences  > h1::before { content: "~/competences"; }
+#veille       > h1::before { content: "~/veille"; }
+#contact      > h1::before { content: "~/contact"; }
+
+/* Cartes génériques */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+
+/* ==========================================================================
+   4. BOUTONS (CTA) ET BADGES
+   ========================================================================== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  min-height: 44px; padding: 0 1.25rem;
+  border: 1px solid transparent; border-radius: var(--radius-sm);
+  font: inherit; font-size: 0.9375rem; font-weight: 500; line-height: 1;
+  text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: transform var(--fast) var(--ease), background-color var(--fast) ease,
+              border-color var(--fast) ease, box-shadow var(--fast) ease, color var(--fast) ease;
+}
+
+/* Bouton principal : plein */
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn-primary:hover {
+  background: var(--accent-hover); color: var(--on-accent);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(var(--accent-rgb), 0.28);
+}
+.btn-primary::after { content: "→"; content: "→" / ""; transition: transform var(--fast) var(--ease); }
+.btn-primary:hover::after { transform: translateX(3px); }
+
+/* Bouton secondaire : contour (ghost) */
+.btn-ghost { background: transparent; color: var(--text); border-color: var(--line-strong); }
+.btn-ghost:hover {
+  color: var(--accent); border-color: rgba(var(--accent-rgb), 0.55);
+  background: var(--accent-soft); transform: translateY(-1px);
+}
+
+.btn:active { transform: translateY(0); }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: var(--radius-sm); }
+
+/* Badge de statut animé (« En alternance @ SDIS 77 ») */
+.badge-live {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  margin: 0 0 1.5rem; padding: 0.4rem 0.9rem;
+  border: 1px solid var(--ok-line); border-radius: 999px;
+  background: var(--ok-bg); color: var(--ok);
+  font-family: var(--mono); font-size: 0.8125rem; line-height: 1.2;
+}
+.badge-live .dot {
+  position: relative; width: 8px; height: 8px; border-radius: 50%; background: #34d399; flex: none;
+}
+.badge-live .dot::after {          /* onde qui se propage autour du point */
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: #34d399; animation: ping 2s var(--ease) infinite;
+}
+@keyframes ping { 0% { transform: scale(1); opacity: 0.7; } 80%, 100% { transform: scale(3.2); opacity: 0; } }
+
+/* Tags / pills pour technologies, commandes et outils */
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0 0 1rem; padding: 0; max-width: none; }
+.tags li {
+  margin: 0; padding: 0.25rem 0.75rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.24); border-radius: 999px;
+  background: rgba(var(--accent-rgb), 0.1); color: var(--accent-hover);
+  font-family: var(--mono); font-size: 0.8125rem; line-height: 1.5;
+}
+
+
+/* ==========================================================================
+   5. ACCUEIL : HERO + CARTE D'INFOS
+   ========================================================================== */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: clamp(2rem, 6vw, 4.5rem);
+  align-items: center;
+  min-height: min(60vh, 34rem);
+}
+.hero h1 { margin-bottom: 0.25rem; }
+.hero-role { font-size: 1.1875rem; line-height: 1.45; color: var(--accent); font-weight: 500; margin: 0.5rem 0 1rem; }
+.hero-text { color: var(--muted); font-size: 1.0625rem; margin-bottom: 2rem; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+/* Carte surélevée « En bref » */
+.hero-card {
+  background: var(--card); border: 1px solid var(--line-strong); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 1.25rem 1.5rem 0.5rem;
+}
+.hero-card h2 {
+  display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.75rem;
+  font-family: var(--mono); font-size: 0.8125rem; font-weight: 400; letter-spacing: 0; color: var(--muted);
+}
+.hero-card h2::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.facts { margin: 0; }
+.facts div { padding: 0.9rem 0; border-top: 1px solid var(--line); }
+.facts dt { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.2rem; }
+.facts dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; }
+
+
+/* ==========================================================================
+   6. PARCOURS : FRISE CHRONOLOGIQUE
+   ========================================================================== */
+.timeline { position: relative; list-style: none; margin: 2rem 0 0; padding: 0 0 0 2rem; max-width: 46rem; }
+.timeline::before {                /* trait vertical */
+  content: ""; position: absolute; left: 0.5rem; top: 0.6rem; bottom: 0.6rem;
+  width: 2px; background: linear-gradient(var(--accent), var(--line) 40%);
+}
+.tl-item { position: relative; margin: 0 0 2.25rem; padding: 1.25rem 1.5rem; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+.tl-item:last-child { margin-bottom: 0; }
+.tl-item::before {                 /* repère rond sur la frise */
+  content: ""; position: absolute; left: calc(-2rem + 0.5rem - 6px + 1px); top: 1.55rem;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--line-strong);
+}
+.tl-current { border-color: rgba(var(--accent-rgb), 0.35); }
+.tl-current::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 5px rgba(var(--accent-rgb), 0.18); }
+.tl-date { display: inline-block; margin-bottom: 0.5rem; font-family: var(--mono); font-size: 0.8125rem; color: var(--accent); }
+.tl-item h3 { margin-bottom: 0.15rem; }
+.tl-org { color: var(--muted); margin-bottom: 0.9rem; }
+.tl-item ul { margin-bottom: 1rem; }
+.tl-item p:last-child, .tl-item ul:last-child { margin-bottom: 0; }
+
+
+/* ==========================================================================
+   7. RÉALISATIONS : CARTES <details>, TAGS, CAPTURES
+   ========================================================================== */
+details.proj {
+  margin: 0 0 0.75rem;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  transition: border-color var(--base) ease, background-color var(--base) ease, box-shadow var(--base) ease;
+}
+details.proj:hover { border-color: var(--line-strong); background: var(--card-hover); }
+details.proj[open] { border-color: rgba(var(--accent-rgb), 0.38); box-shadow: var(--shadow-sm); }
+
+details.proj summary {
+  display: flex; align-items: center; gap: 1rem;
+  min-height: 4rem; padding: 0.75rem 1.25rem;
+  list-style: none; cursor: pointer;
+  font-weight: 500; font-size: 1.0625rem;
+  border-radius: var(--radius);
+}
+details.proj summary::-webkit-details-marker { display: none; }
+details.proj summary .date { margin-left: auto; font-family: var(--mono); font-size: 0.8125rem; font-weight: 400; color: var(--muted); }
+details.proj summary::after {      /* chevron qui pivote à l'ouverture */
+  content: ""; flex: none; width: 9px; height: 9px;
+  border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform var(--base) var(--ease), border-color var(--fast) ease;
+}
+details.proj[open] summary::after { transform: rotate(-135deg) translateY(-2px); border-color: var(--accent); }
+details.proj summary:hover { color: var(--accent); }
+
+.proj-body { padding: 0 1.25rem 1.5rem; }
+.proj-body dl { margin: 0; display: grid; gap: 1rem; }
+.proj-body dt { font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 0.3rem; }
+.proj-body dd { margin: 0; max-width: 42rem; color: #e2e8f0; }
+.proj-body dd ul { margin: 0; }
+
+/* Animation d'ouverture : fondu + glissement du contenu */
+details.proj[open] .proj-body { animation: proj-in 320ms var(--ease) both; }
+@keyframes proj-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+/* Navigateurs récents : la hauteur s'anime aussi (ouverture ET fermeture) */
+@supports selector(::details-content) {
+  details.proj { interpolate-size: allow-keywords; }
+  details.proj::details-content {
+    block-size: 0; overflow: clip;
+    transition: block-size var(--base) var(--ease), content-visibility var(--base) allow-discrete;
+  }
+  details.proj[open]::details-content { block-size: auto; }
+  details.proj[open] .proj-body { animation: none; }
+}
+
+/* Conteneur pour captures d'écran (topologie réseau, GLPI, console AD...) */
+.shot { margin: 1.5rem 0 0; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--bg-soft); overflow: hidden; }
+.shot::before {                    /* barre de fenêtre */
+  content: ""; display: block; height: 2rem;
+  background:
+    radial-gradient(circle at 1rem 50%, #475569 4px, transparent 5px),
+    radial-gradient(circle at 2rem 50%, #475569 4px, transparent 5px),
+    radial-gradient(circle at 3rem 50%, #475569 4px, transparent 5px),
+    rgba(30, 41, 59, 0.6);
+  border-bottom: 1px solid var(--line);
+}
+.shot img { display: block; width: 100%; height: auto; }
+.shot-ph { display: grid; place-items: center; aspect-ratio: 16 / 9; padding: 1rem; text-align: center; color: var(--muted); font-family: var(--mono); font-size: 0.8125rem; }
+.shot figcaption { padding: 0.65rem 1rem; border-top: 1px solid var(--line); color: var(--muted); font-family: var(--mono); font-size: 0.75rem; }
+
+
+/* ==========================================================================
+   8. COMPÉTENCES : CARTES PAR BLOC, BADGES, GRILLE D'OUTILS
+   ========================================================================== */
+.bloc-card { margin: 0 0 1.5rem; padding: 1.25rem 1.5rem 0.75rem; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+.bloc-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 0.9rem; margin: 0 0 0.75rem; font-size: 1.0625rem; line-height: 1.35; }
+.bloc-num {
+  padding: 0.15rem 0.6rem; border-radius: 6px;
+  background: var(--accent-soft); color: var(--accent);
+  font-family: var(--mono); font-size: 0.75rem; font-weight: 400; white-space: nowrap;
+}
+
+.scroll { overflow-x: auto; }
+table { width: 100%; min-width: 34rem; border-collapse: collapse; table-layout: fixed; font-size: 0.9375rem; }
+/* Colonnes identiques dans les trois blocs */
+th:nth-child(1) { width: 48%; }
+th:nth-child(2) { width: 32%; }
+th:nth-child(3) { width: 20%; }
+th, td { padding: 0.9rem 1rem 0.9rem 0; text-align: left; vertical-align: top; border-top: 1px solid var(--line); }
+thead th { border-top: 0; padding-top: 0.25rem; padding-bottom: 0.6rem; color: var(--muted); font-family: var(--mono); font-size: 0.75rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.06em; }
+tbody tr { transition: background-color var(--fast) ease; }
+tbody tr:hover { background: rgba(148, 163, 184, 0.05); }
+td.where { color: var(--muted); }
+td.st { white-space: nowrap; padding-right: 0; }
+
+/* Badges d'état : vert doux / ambre / gris neutre (l'état est aussi écrit en toutes lettres) */
+.badge {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.2rem 0.7rem; border: 1px solid; border-radius: 999px;
+  font-size: 0.8125rem; font-weight: 500; line-height: 1.5;
+}
+.badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.st.ok   .badge { color: var(--ok);   background: var(--ok-bg);   border-color: var(--ok-line); }
+.st.wip  .badge { color: var(--wip);  background: var(--wip-bg);  border-color: var(--wip-line); }
+.st.todo .badge { color: var(--todo); background: var(--todo-bg); border-color: var(--todo-line); }
+
+/* Grille des outils, par catégorie */
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+.tool-group { padding: 1.25rem 1.25rem 0.5rem; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+.tool-group h3 { margin-bottom: 0.9rem; font-family: var(--mono); font-size: 0.75rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+
+
+/* ==========================================================================
+   9. VEILLE : CARTES DE SOURCES + JOURNAL
+   ========================================================================== */
+.source-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; list-style: none; margin: 0 0 1rem; padding: 0; max-width: none; }
+.source-grid li { margin: 0; }
+.source-card {
+  position: relative; display: block; height: 100%; padding: 1.1rem 2.5rem 1.1rem 1.25rem;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  color: var(--text); text-decoration: none;
+  transition: transform var(--fast) var(--ease), border-color var(--fast) ease, background-color var(--fast) ease;
+}
+.source-card strong { display: block; margin-bottom: 0.25rem; font-weight: 600; }
+.source-card span { color: var(--muted); font-size: 0.9375rem; }
+.source-card::after { content: "↗"; content: "↗" / ""; position: absolute; top: 1rem; right: 1.1rem; color: var(--muted); transition: color var(--fast) ease, transform var(--fast) var(--ease); }
+.source-card:hover { transform: translateY(-2px); border-color: rgba(var(--accent-rgb), 0.5); background: var(--card-hover); color: var(--text); }
+.source-card:hover::after { color: var(--accent); transform: translate(2px, -2px); }
+
+.journal-entry { padding: 1.25rem 1.5rem; background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius); }
+.journal-entry h3 { margin-bottom: 0.2rem; }
+.journal-entry p:last-child { margin-bottom: 0; }
+
+
+/* ==========================================================================
+   10. CONTACT
+   ========================================================================== */
+.contact-card { padding: clamp(1.25rem, 4vw, 2rem); background: var(--card); border: 1px solid var(--line-strong); border-radius: var(--radius); box-shadow: var(--shadow); max-width: 42rem; }
+.contact-card .small { margin-bottom: 0.4rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.75rem; }
+.mail { display: inline-block; margin-bottom: 1.25rem; color: var(--text); font-size: clamp(1.15rem, 3.4vw, 1.6rem); font-weight: 600; letter-spacing: -0.01em; overflow-wrap: anywhere; text-decoration-color: rgba(var(--accent-rgb), 0.5); text-decoration-thickness: 2px; }
+.mail:hover { color: var(--accent); }
+.copy-status { min-height: 1.5rem; margin: 0.75rem 0 0; color: var(--ok); font-size: 0.875rem; }
+
+.link-list { display: flex; flex-wrap: wrap; gap: 0.75rem; list-style: none; margin: 0; padding: 0; max-width: none; }
+.link-list li { margin: 0; }
+
+
+/* ==========================================================================
+   11. PIED DE PAGE + BOUTON FLOTTANT
+   ========================================================================== */
+footer { margin-top: 2rem; padding: 1.5rem max(var(--gutter), calc((100% - var(--page)) / 2 + var(--gutter))); border-top: 1px solid var(--line); color: var(--muted); font-size: 0.875rem; }
+
+/* Bouton « Me contacter » : fixe en bas à droite */
+.fab {
+  position: fixed; z-index: 40;
+  right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom));
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+body { padding-bottom: 5rem; }   /* évite que le bouton masque la fin du contenu */
+
+
+/* ==========================================================================
+   12. RESPONSIVE
+   ========================================================================== */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+}
+
+@media (max-width: 767px) {
+  .site-head { padding: 0.25rem var(--gutter); }
+
+  /* Menu replié derrière un bouton */
+  .js .btn.menu-btn { display: inline-flex; min-height: 44px; padding: 0 1rem; }
+  .js .site-head nav { width: 100%; }
+  .js .tabs { display: none; flex-direction: column; gap: 0; padding: 0.25rem 0 0.75rem; }
+  .js .tabs.open { display: flex; }
+  .js .tabs a { width: 100%; border-radius: var(--radius-sm); font-size: 1rem; }
+  .js .tabs a[aria-current="page"]::after { display: none; }
+
+  main { padding-top: 2.25rem; }
+  .timeline { padding-left: 1.75rem; }
+  .tl-item { padding: 1rem 1.1rem; }
+  .tl-item::before { left: calc(-1.75rem + 0.5rem - 6px + 1px); }
+  details.proj summary { padding: 0.75rem 1rem; font-size: 1rem; }
+  .proj-body { padding: 0 1rem 1.25rem; }
+}
+
+@media (max-width: 700px) {
+  /* Les tableaux de compétences deviennent une pile de lignes lisibles */
+  .bloc-card { padding: 1rem 1.1rem 0.5rem; }
+  table, thead, tbody, tr, td { display: block; min-width: 0; width: auto; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { padding: 0.9rem 0; border-top: 1px solid var(--line); }
+  td { padding: 0; border: 0; }
+  td.where { margin-top: 0.35rem; font-size: 0.875rem; }
+  td.where::before { content: "Travaillée : "; font-family: var(--mono); font-size: 0.75rem; }
+  td.st { margin-top: 0.6rem; }
+}
+
+
+/* ==========================================================================
+   13. ACCESSIBILITÉ : ANIMATIONS RÉDUITES
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+
+/* ==========================================================================
+   14. IMPRESSION (fond blanc, tous les onglets à la suite)
+   ========================================================================== */
+@media print {
+  :root { --bg: #fff; --bg-soft: #fff; --card: #fff; --text: #000; --muted: #444; --line: #bbb; --line-strong: #999; --accent: #000; --accent-hover: #000; --ok: #000; --wip: #000; --todo: #000; }
+  .skip, .site-head, .fab, .btn, .menu-btn, .shot-ph { display: none !important; }
+  body { padding-bottom: 0; background: #fff; }
+  .js .panel { display: block !important; margin-bottom: 2rem; animation: none; }
+  h1, h2 { break-after: avoid; }
+  .tl-item, details.proj, .bloc-card { break-inside: avoid; box-shadow: none; }
+}
